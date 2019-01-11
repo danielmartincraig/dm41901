@@ -291,7 +291,7 @@ Course Tracker acronyms and their meanings.
 	+ CRU - I Completed the Reading and achieved a level of Understanding *before* the start of Wednesday\rsquo{}s class and recorded questions about the items I didn\rsquo{}t understand.
 	+ PFP - I was present for and attentive to the presentation for this date.
 	+ CDL - I fully participated in the Class Directed Learning for this date.
-	+ SAQ - I submitted /at least 1/ appropriate, Significant, Actual Question I have regarding the information for this week.
+	+ SAQ - I submitted /at least 1/ appropriate, Significant, al Question I have regarding the information for this week.
 	+ PAQ - I was Present for and Attentive to the Answer Questions presentation for this date.
 	+ PPL - I, individually, correctly completed this Percentage of the Problems and exercises proving this Level of understanding before Friday at Midnight.
 
@@ -301,7 +301,7 @@ On the week indicated, bring this updated document to my office and make your cl
 
 | / | <>         | <>          | <>               | <>             |
 |---+------------+-------------+------------------+----------------|
-| # | Claim Week | Grade Claim | Instructor Grade | Adjusted Grade |
+| # | Claim Week | Grade Claim | Instructor Grade | usted Grade |
 |---+------------+-------------+------------------+----------------|
 | # | 5          |             |                  |                |
 |---+------------+-------------+------------------+----------------|

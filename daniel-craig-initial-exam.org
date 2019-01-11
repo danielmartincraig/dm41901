@@ -5,12 +5,134 @@ that the field of computing can have fallen so short of its aspirations? It must
 be that human thought is very different from computation, and that we actually
 don't understand human thought well enough to mimic it with computers.
 
-Human thought is a power that each of us is born with. It is unfortunate that we
-are not also born with technical documentation detailing our complex and amazing
-mental processes, which we take for granted. Our minds enable of us to have
-original thoughts, make original decisions, to create, support, and collaborate,
-and to be to be conscious of our own selves.
+Human thought is a power that each of us is born with. Unfortunately, we are not
+born with any type of documentation that explains our complex and amazing mental
+processes, which we take for granted. Our minds enable of us to have original
+thoughts, make original decisions, to create, support, and collaborate, and to
+be to be conscious of our own selves. 
+
+Unlike humans, computers are not born with any instincts. Whereas humans think
+and decide from their earliest moments on Earth, computers can only do things
+that they are programmed to do by humans. Advances in artificial intelligence
+have led to the advent of computers that can imitate and infer, but they are not
+capable of creative thought. 
+
+Human beings are all different, but in many ways computers seem to function
+under the assumption that the randomness of human characteristics is normally
+distributed, and that computer sentience in serving humans is something that can
+be mimicked by giving the majority of users what they want.
+
+This idea can be expressed another way: Although a computer can't be designed to
+serve everyone's needs perfectly, it *can* be designed to serve the majority of
+people's needs extremely well if it is designed to serve the average user
+perfectly, assuming that people are normally distributed with regard to their
+characteristics.
+
+Although I don't know very much about what the assignment calls "the
+computational and philosophical implications of randomness and sentience," I
+will attempt to discuss this topic as I answer the following questions from the
+assignment:
+
+  1. What do *you* think are appropriate methods to model computing and human thought?
+  2. Are you a realist or an instrumentalist?
+  3. Would you rather have computers be more like cats or like dogs?!
+
+Question 1. What do *you* think are appropriate methods to model computing and
+human thought?
+
+Of the three questions, this is the one that I feel least qualified to answer.
+After all, I have only just begun my study of computation. Human thought is an
+even more difficult subject! Modeling either can be achieved in a variety of
+ways. To give an idea of the sheer volume of ways that computation can be
+modeled, see *Computational Completeness of Interaction Machines and Turing
+Machines* by Wegner, Eberbach, and Burgin.  Quoting from the paper:
+
+"Turing himself did not accept his TM model as a complete model of computation.
+In particular, Turing besides his classical a-machines (known commonly as TMs
+[21]), proposed more expressive TM with oracles (o-machines) [22], choice
+machines (c-machines) [21], and unorganized machines (u-machines) [23]. Ulam
+and von Neumann in the search of a universal constructor (subsuming universal
+computability) turned out to the help of expressive power of cellular automata
+[26] rather than TMs. Several scientists were attracted by expressiveness of
+neural networks, analog computing, reactive systems, natural computing. The list
+of models going beyond Turing Machines is quite long, and includes mentioned
+before o-machines, c-machines, u-machines, Inductive Turing Machines, Limit
+Turing Machines, Interaction Machines, Persistent Turing Machines, Site and
+Internet Machines, Infinite Time Turing Machines, Evolutionary Turing Machines,
+random automata networks, neural networks, π-calculus and $-calculus."
+
+I don't know what the majority of these machines are, nor do I know why the were
+invented or how they accomplish their task of modeling computation. I feel that
+it is appropriate to use any of these invented machines to model computation.  
+
+In particular, I can speak to the appropriateness of using a neural network to
+model computation.  Neural nets have the .
+
+Question 2. Are you a realist or an instrumentalist?
 
 
 
+Question 3. Would you rather have computers be more like cats or like dogs?!
+
+Robert B. Laughlin, in his book *A Different Universe*, claims the following:
+
+"... computers were originally conceived as dogs but now have become cats. The
+machine one brings home from the store is clever, self-serving, constantly
+underfoot, and always scheming how to get you to do what it wants. But when you
+lobotomize the thing, strip away its sophistication, and reach down past the
+facade to the wires, transistors, and algorithms underneath you find unques-
+tioning obedience, steadfast loyalty, straightforwardness, and simplicity— i.e.,
+a dog."
+
+Randomness and sentience have a lot to do with the distinction that the author
+makes between dog- and cat-like computers. The essential difference between dog-
+and cat-like computers is that a cat-like computer imitates sentience as it
+attempts to please the user. I would rather have a dog-like computer than a
+cat-like computer.
+
+One cat-like example of a computer attempting to imitate sentience was Clippy,
+an aggressive cartoon character that gave suggestions to users of Microsoft
+Word. Another is Google Photos, where some cool photo effects are inaccessible
+to users except when the baked-in AI mind offers them. In both cases the
+software has been engineered to take a chance on pleasing the user by deciding
+whether to offer or to hold back content.
+
+A company's objective in engineering their sentience-imitating software is to
+please the largest possible set of users and to delight them if possible.
+Companies now collect usage data continuously, and they please the largest
+possible set of users by treating each user as if they were most likely to want
+to do what the majority of users similar to them are doing. 
+
+YouTube is perhaps the best example of this behavior; it regularly recommends
+videos to users solely based on other user's watching habits. It seems that
+because of this type of probability-serving software design, the functionality
+of most software products eventually converges to serve the usage habits of its
+average user.
+
+Sentience-imitating software has the effect of irritating a user who knows what
+they want to do. Attempts by the computer to recommend, suggest, or direct an
+atypical user who is using the computer in a purposeful way will identify the
+computer as 'cat-like.' This is to say that the computer will give the
+impression of being "self serving" and "underfoot", as Laughlin said.
+
+I would rather have a dog-like computer. Dogs are the symbol of loyalty, and a
+dog-like computer is a computer that has stayed true to its humble and loyal
+nature. One simple phrase is sufficient to summarize the work that a computer
+does at its heart: 'Computers obey commands given by users.'
+
+A dog-like computer waits until it is commanded to act. A dog-like computer
+doesn't suggest things to its user. A dog-like computer is agreeable, obedient
+and faithful. In situations where reliability is vital, such as in web hosting,
+a dog-like computer will be absolutely requisite.
+
+I think that it's for similar reasons that I would rather have a dog-like
+computer than a cat-like computer. I like my computer to be predictable and I
+like the results that it gets to be repeatable. I don't like it to output
+decisions and suggestions, because it doesn't understand the things that I am
+trying to accomplish. 
+
+I'll use a cat-like computer when the majority of people become Computer Science
+students and when software products' automatic suggestions and design decisions
+are based on the usage habits of users like me. Until then, I'll keep using
+Linux.
 
