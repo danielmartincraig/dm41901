@@ -1,2 +1,322 @@
+Here is where I will type my work for Week 02.
 
- Here is where I will type my work for Week 02.
+* Questions [24%]
+** DONE Question 1
+   CLOSED: [2019-01-16 Wed 12:59]
+  As per our definitions, can *Nat* be an alphabet? Why or why not?
+
+*** My Answer
+   No, *Nat* is not finite, and therefore is not an alphabet.
+
+** DONE Question 2
+   CLOSED: [2019-01-16 Wed 13:03]
+  Consider the string "Hello there!". What are the symbols present in this string,
+  and what is the smallest alphabet underlying this string?
+
+*** My Answer
+
+   The symbols present in the string are 'H', 'e', 'l', 'o', ' ', 't', 'h', 'r',
+   and '!'. This means that the smallest alphabet underlying this string is
+   {'H', 'e', 'l', 'o', ' ', 't', 'h', 'r', '!'}
+
+   #+BEGIN_SRC python :results silent
+   alphabet = {'H', 'e', 'l', 'o', ' ', 't', 'h', 'r', '!'}
+   #+END_SRC
+
+** DONE Question 3
+   CLOSED: [2019-01-16 Wed 13:03]
+  All palindromes are the concatenation of a string with its reverse? If not, why
+  not?
+
+*** My Answer
+   No. Some palindromes have an odd number of characters (for example 'Mom' and
+   'Dad'), and the concatenation of a string with its reverse will always result
+   in a string with an even number of characters.
+
+** DONE Question 4
+   CLOSED: [2019-01-16 Wed 13:03]
+  Consider a string s=abacaca. Now consider the string exponentiation s^4. How
+  many a's are there in s^4? How about b's, c's and d's?
+
+*** My Answer
+   There are 4 a's, 1 b, 2 c's, and no d's in s. Therefore, there are 16 a's, 4
+   b's, 8 c's, and no d's in s^.
+
+** DONE Question 5
+   CLOSED: [2019-01-16 Wed 13:28]
+  Let Nat be regarded as the universal set in some domain of discourse. Now
+  consider subsets of *Nat*, and let us view set intersection of such sets as
+  "multiplication." In that case, what is the *One* element of this multiplication
+  operator? What is the *Zero* element of this multiplication operator? Recall
+  that for any s \sube *Nat*, these One and Zero elements must satisfy:
+  - (a) s \cap *One* = s
+  - (b) s \cap *Zero* = *Zero*
+
+*** My Answer
+    
+    The *One* element of *Nat* is *Nat* itself. This is because the intersection
+    of any subset s of *Nat* with *Nat*, s \cap *Nat* where s \sube *Nat*, is always
+    equal to s, thus satisfying requirement a.
+
+    The *Zero* element of *Nat* is \empty. This is because the intersection of any
+    subset s of *Nat* with {\empty} is always equal to {\empty}, thus satisfying
+    requirement b.
+
+** TODO Question 6
+  Why is \epsilon not a member of L_(a_lt_b)?
+
+*** My Answer
+
+** TODO Question 7
+  Which inequality in the definition of L_(a_lt_b) would you alter in order to
+  induce \epsilon into this language?
+
+*** My Answer
+
+** DONE Question 8
+   CLOSED: [2019-01-16 Wed 16:56]
+  Write a one-line list comprehension in Python to generate the set of all
+  substrings of s="abc". You can assume that s="abc" is a statement issued prior
+  to your set comprehension.
+
+*** My Answer
+
+    This is the decompressed version of the list comprehension. This answer is
+    inspired by https://stackoverflow.com/a/1482320/6074048, where I learned a
+    great algorithm for how to do this. 
+
+    #+BEGIN_SRC python :results output
+      # Declare the string
+      s = "abc"
+
+      # This method depends on the fact that counting in binary enumerates all the
+      # possible states of a set. This is possible if one considers that a '0' bit in
+      # the binary count denotes an element of the set that is to be excluded from
+      # the subset, and a '1' bit denotes an element of the set that is to be
+      # included in the subset.
+
+      # For example, '101' should be read as saying that 'a' is included in the
+      # subset, 'b' is excluded, and 'c' is included
+
+      # Iterate over the numbers between 1 and the number of letters in s. I call
+      # these the set numbers, because each set has its own number.
+
+      # At each iteration, use the set number to check which of the characters in s
+      # needs to be included in the subset. This is done by bitshifting 0x1 left to
+      # check each position in s to see if the bits of the set number dictate that it
+      # is to be included in the subset
+
+      for setnumber in range(2**len(s)):
+          for letternumber in range(len(s)):
+              if (setnumber & (2 ** letternumber)):
+                  print s[letternumber],
+          print ""
+    #+END_SRC
+
+    #+RESULTS:
+    : 
+    : a 
+    : b 
+    : a b 
+    : c 
+    : a c 
+    : b c 
+    : a b c 
+
+    #+BEGIN_SRC python :results output
+      # The faster way to do this, which looks just like the code that I learned how
+      # to do this from, is as follows
+
+      s = "abc"
+      print [[s[letternumber] for letternumber in range(len(s)) if (setnumber & (1 << letternumber))] for setnumber in range(1 << len(s))]
+
+    #+END_SRC
+
+    #+RESULTS:
+    : [[], ['a'], ['b'], ['a', 'b'], ['c'], ['a', 'c'], ['b', 'c'], ['a', 'b', 'c']]
+
+** TODO Question 9
+  Write down a one-line set comprehension in Python to generate a set of strings
+  of the following form:
+
+  #+BEGIN_SRC python :results silent
+{'', '((((()))))', '(((())))', '()', '((()))', '(())'}
+  #+END_SRC
+
+  We want this set to include all strings consisting of n left parentheses
+  followed by n right parentheses for 0 \le n \le 5. Note that for n = 0, we are
+  generating \epsilon (or '' in Python).
+
+#+BEGIN_SRC
+
+#+END_SRC
+
+*** My Answer
+
+** TODO Question 10
+  Is this true in Python for two string p and q? Explain! Argue (in one paragraph)
+  why this works for any two strings p and q.
+
+  #+BEGIN_SRC python :results silent
+(p+q)[::-1] == (q[::-1] + p[::-1])
+  #+END_SRC
+
+*** My Answer
+
+** TODO Question 11
+
+  In a sentence or two, describe the contents of L_1, L_2, and L_3 in English.
+
+  L_1 = {(^n)^n : n \ge 0}
+  L_2 = {w:w is a string of balanced parentheses}
+  L_3 = {w:w has an equal number of parentheses}.
+
+  Note that the alphabet consists of the two symbols ( and _. By "balanced
+  parentheses," we mean that in any string over ( and ), every occuraence of a
+  right parenthesis must be matched by a left parenthesis that appears earlier in
+  the string. In your answer you should also mention all possible language
+  inclusions that exist among L_1, L_2, and L_3 (i.e., if L_x \sub L_y for x,y \in
+  {1.2.3}, mention that in your answer).
+
+*** My Answer
+
+** TODO Question 12
+  What is the difference between {\epsilon} and {\empty}? Which of these is a language over
+  the alphabet {2,3}?
+
+*** My Answer
+
+** TODO Question 13
+  Prove that {\epsilon} is indeed the *One* element for language concatenation by
+  showing that it left-multiplies or right-multiplies any language L to give
+  back L.
+
+*** My Answer
+
+
+** TODO Question 14
+  Suppose \Sigma = {0,1} - commonly called "the alphabet" is treated as a language.
+  All alphabets are special cases of languages; these is nothing surprising
+  here! The alphabet \Sigma = {0,1} is a language of two strings, each of length 1.
+  Now, write out the contents of the following language exponents in their
+  entirety. To avoid confusion, we have written out the answer for one case: 
+  (a) \Sigma^2 = {00,01,10,11}
+  (b) \Sigma^0 = ?
+  (c) \Sigma^1 = ?
+  (d) \Sigma^3 = ?
+
+*** My Answer
+
+** TODO Question 15
+  Suppose a language M = {0,10} is given.  What are the following language exponents?  
+  (a) M^2 = {00, 010, 100, 1010}
+  (b) M^0 = ?
+  (c) M^1 = ?
+  (d) M^3 = ?
+
+*** My Answer
+
+** TODO Question 16
+  On Page 20, we defined three languages L_1, L_2, and L_3. Answer these question
+  with respect to these languages.
+  (a) List the three shortest strings in L_1^3.
+  (b) List a string of length 6 in L_2 that is not in L_1^n for any n.
+  (c) What is the shortest string common to L_1^0, L_2^0, L_3^0, and why?
+
+*** My Answer
+
+** TODO Question 17
+  On Page 20, we defined three languages L_1, L_2, and L_3. Answer these questions
+  with respect to these languages.
+  (a) Does L_1 \cup L_2 match any of these three languages?  Which one, why?
+  (b) Repeat for L_1 \cup L_3 and L_1 \cap L_2
+
+*** My Answer
+
+** TODO Question 18
+  Let us define a function 'star' with the following definition:
+
+  (a) star(L,0) = L^0
+  (b) star(L,1) = L^0 \cup L^1
+  (c) star(L,2) = L^0 \cup L^1 \cup L^2
+
+  Now write down the contents of star(L,n) for various L and n. Again, to avoid
+  confusion, we have written out the answer for some number of cases:
+  (a) star({0,1}, 2) = {\epsilon, 0, 1, 0, 01, 10, 11}
+  (b) star({0,1}, 0) = ?
+  (c) star({0,1}, 1) = ?
+  (d) star({0,1}, 3) = ?
+  (e) star({0,10}, 2) = ?
+  (f) star({0,10}, 0) = ?
+  (g) star({0,10}, 1) = ?
+  (h) star({0,10}, 3) = ?
+  (i) star({0,10}, 2) = {\epsilon, 0, 1, 00, 01, 00, 10, 11, 100, 001, 0000}
+  (j) star({0,10}, 0) = ?
+  (k) star({0,10}, 1) = ?
+  (l) star({0,10}, 3) = ?
+  (m) How many elements are these in star({0,1}, \infin)? Explain your answer.
+  (n) Suppose we define star({0,1}) = star({0,1}, \infin). That is, when we drop the
+      second argument of the ocerloaded star function, we assume that its
+      meaning is the same as the star function of two arguments where the second
+      argument is set to \infin. 
+      
+      Question: How would you describe one random string in star({0,1})?
+
+      Think of a general way of characterizing it; here is a start: An arbitrary
+      string that is finite/infinite and each symbol in the string is a ...
+
+*** My Answer
+
+** TODO Question 19
+  Show that L_E is the set of even-length strings over alphabet {0}.
+  L_E = {0^{2i} : i \ge 0}
+
+*** My Answer
+
+** TODO Question 20
+  Show that L_E = {(00)^i : i \ge 0} (the parentheses are used to group the two 0's
+  and are not part of the alphabet).
+
+*** My Answer
+
+** TODO Question 21
+  Let L_0 = {0^{2i+1} : i \ge 0}. Show that {0}* = L_0 \cup L_E.
+
+*** My Answer
+
+** TODO Question 22
+  Describe this language in English: 
+  Eq_01 = {0^{n}1^{n} : n \ge 0}
+
+*** My Answer
+
+** TODO Question 23
+  Which of the following languages is Eq_01 equal to, and why/why not:
+  (a) L_1 = {0^{i}1^{i} : i \ge 0}
+  (b) L_2 = {0^n : n \ge 0}{1^n : n \ge 0}
+  (c) L_3 = {00^{i}11^{i} : i \ge 0} (the exponentiations apply to only the single 0 and the sing 1 respectively)
+  (d) L_4 = {00^{i}11^{i} : i > 0} 
+  (e) L_5 = {00^{i}11^{i} : i \ge 0} \cup {\epsilon}
+  (f) L_6 = {0^{i}1^{j} : i,j \ge 0, and (i = j)}
+
+*** My Answer
+
+** TODO Question 24
+  Consider the language L_7 = {0^{i}1^{j} : i, j \ge 0}.  Is it true that L_7 = {0^{i} : i \ge 0}{1^i : i \ge 0}? 
+  Explain, providing reasons.
+
+*** My Answer
+
+** TODO Question 25
+  Someone proposes that the complement of L_6 (written \bar{L_6}) is defined as
+  follows. L_8 = {0^{i}1^{j} : i, j \ge 0, and (i \ne j)}. Assume that the alphabet is \Sigma =
+  {0,1}. 
+  
+  (a) If true, argue why. 
+  (b) If not true, list four strings in \bar{L_6} that are not in L_8. 
+  (c) Describe all the strings in \bar{L_6} - L_8 (set subtraction of L_8 from L_6),
+      dividing them up into conveniently specifiable classes (explain each class
+      first in English and then using set comprehensions).
+  (d) Are there strings in L_8 that are not in \bar{L_6}?  Explain.
+  
+*** My Answer
