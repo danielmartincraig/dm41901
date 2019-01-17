@@ -1,6 +1,6 @@
 Here is where I will type my work for Week 02.
 
-* Questions [24%]
+* Questions [28%]
 ** DONE Question 1
    CLOSED: [2019-01-16 Wed 12:59]
   As per our definitions, can *Nat* be an alphabet? Why or why not?
@@ -135,23 +135,28 @@ Here is where I will type my work for Week 02.
     #+RESULTS:
     : [[], ['a'], ['b'], ['a', 'b'], ['c'], ['a', 'c'], ['b', 'c'], ['a', 'b', 'c']]
 
-** TODO Question 9
+** DONE COMMENT Question 9
+   CLOSED: [2019-01-16 Wed 17:03]
   Write down a one-line set comprehension in Python to generate a set of strings
   of the following form:
 
   #+BEGIN_SRC python :results silent
-{'', '((((()))))', '(((())))', '()', '((()))', '(())'}
+  ['', '((((()))))', '(((())))', '()', '((()))', '(())']
   #+END_SRC
 
   We want this set to include all strings consisting of n left parentheses
   followed by n right parentheses for 0 \le n \le 5. Note that for n = 0, we are
   generating \epsilon (or '' in Python).
 
-#+BEGIN_SRC
-
-#+END_SRC
-
 *** My Answer
+
+  #+BEGIN_SRC python :results output
+    n = 5
+    print ['(' * i + ')' * i for i in range(6)]
+  #+END_SRC
+
+  #+RESULTS:
+  : ['', '()', '(())', '((()))', '(((())))', '((((()))))']
 
 ** TODO Question 10
   Is this true in Python for two string p and q? Explain! Argue (in one paragraph)
