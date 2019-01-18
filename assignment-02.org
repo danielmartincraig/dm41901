@@ -1,6 +1,6 @@
 Here is where I will type my work for Week 02.
 
-* Questions [72%]
+* Questions [100%]
 ** DONE Question 1
    CLOSED: [2019-01-16 Wed 12:59]
   As per our definitions, can *Nat* be an alphabet? Why or why not?
@@ -220,11 +220,9 @@ Here is where I will type my work for Week 02.
   {1,2,3}, mention that in your answer).
 
 *** My Answer
-
-
-    L_1 is the language of all balanced sets of parenthesis, and includes \epsilon.
-    L_2 is the language including a single string of balanced parentheses. L_2 \sub L_1
-    L_3 is the language including a single string with an equal number of parentheses. L_3 \sub L_1
+    L_1 is the language of all palidromic balanced sets of parentheses, and includes \epsilon.
+    L_2 is the language of all strings with balanced sets of parentheses.
+    L_3 is the language of all strings with an equal number of left and right parentheses.
 
 ** DONE Question 12
    CLOSED: [2019-01-17 Thu 17:32]
@@ -237,26 +235,31 @@ Here is where I will type my work for Week 02.
     {\epsilon} is a set with one empty string in it. Both are languages over the
     alphabet {2, 3}.
 
-
-** TODO Question 13
+** DONE Question 13
+   CLOSED: [2019-01-17 Thu 21:23]
   Prove that {\epsilon} is indeed the *One* element for language concatenation by
   showing that it left-multiplies or right-multiplies any language L to give
   back L.
 
 *** My Answer
+    L{\epsilon} and {\epsilon}L both result in L. This is because language concatenation is
+    achieved by concatenating every string in L_2 to every string in L_1, which
+    results in the same set of words when you are concatenating \epsilon to each one,
+    or concatenating each one to \epsilon.
 
-** TODO Question 14
+** DONE Question 14
+   CLOSED: [2019-01-17 Thu 21:16]
   Suppose \Sigma = {0,1} - commonly called "the alphabet" is treated as a language.
   All alphabets are special cases of languages; these is nothing surprising
   here! The alphabet \Sigma = {0,1} is a language of two strings, each of length 1.
   Now, write out the contents of the following language exponents in their
   entirety. To avoid confusion, we have written out the answer for one case: 
-  (a) \Sigma^2 = {00,01,10,11}
-  (b) \Sigma^0 = ?
-  (c) \Sigma^1 = ?
-  (d) \Sigma^3 = ?
 
 *** My Answer
+  (a) \Sigma^2 = {00,01,10,11}
+  (b) \Sigma^0 = {\epsilon}
+  (c) \Sigma^1 = {0,1}
+  (d) \Sigma^3 = {000, 001, 010, 011, 100, 101, 110, 111}
 
 ** DONE Question 15
    CLOSED: [2019-01-17 Thu 08:47]
@@ -264,26 +267,37 @@ Here is where I will type my work for Week 02.
 
 *** My Answer
   (a) M^2 = {00, 010, 100, 1010}
-  (b) M^0 = {}
+  (b) M^0 = {\epsilon}
   (c) M^1 = {0, 10}
   (d) M^3 = {000, 0010, 0100, 01010, 1000, 10010, 10100, 101010}
-
-** TODO Question 16
+  
+** DONE Question 16
+   CLOSED: [2019-01-17 Thu 21:00]
   On Page 20, we defined three languages L_1, L_2, and L_3. Answer these question
   with respect to these languages.
-  (a) List the three shortest strings in L_1^3.
-  (b) List a string of length 6 in L_2 that is not in L_1^n for any n.
-  (c) What is the shortest string common to L_1^0, L_2^0, L_3^0, and why?
 
 *** My Answer
+    (a) List the three shortest strings in L_1^3.
+        ["", "()", "()()"]
+    (b) List a string of length 6 in L_2 that is not in L_1^n for any n.
+        "(()())"
+    (c) What is the shortest string common to L_1^0, L_2^0, L_3^0, and why?
+        They each only have \epsilon, because they are each raised to the 0 power.
 
-** TODO Question 17
+** DONE Question 17
+   CLOSED: [2019-01-17 Thu 21:14]
   On Page 20, we defined three languages L_1, L_2, and L_3. Answer these questions
   with respect to these languages.
-  (a) Does L_1 \cup L_2 match any of these three languages?  Which one, why?
-  (b) Repeat for L_1 \cup L_3 and L_1 \cap L_2
 
 *** My Answer
+  (a) Does L_1 \cup L_2 match any of these three languages?  Which one, why?
+      I think that L_1 \cup L_2 matches L_3, because L_2 contains all the elements
+      of L_1 except for \epsilon. The union of the two is the same as the set of all
+      strings with an equal number of left and right parentheses.
+  (b) Repeat for L_1 \cup L_3 and L_1 \cap L_2
+      - The union of L_1 and L_3 is the same as L_3, because L_1 is a subset of L_3.
+      - The intersection of L_1 and L_2 is not equal to any other set, because it
+        is more limited than L_1, L_2, and L_3.
 
 ** DONE Question 18
    CLOSED: [2019-01-17 Thu 14:30]
@@ -389,24 +403,37 @@ Here is where I will type my work for Week 02.
 *** My Answer
     Eq_01 is the language of all strings composed of n '0's followed by n '1's.
 
-** TODO Question 23
+** DONE Question 23
+   CLOSED: [2019-01-17 Thu 21:27]
+  Eq_01 = {0^{n}1^{n} : n \ge 0}
+
   Which of the following languages is Eq_01 equal to, and why/why not:
   (a) L_1 = {0^{i}1^{i} : i \ge 0}
+      Yes, they are identical
   (b) L_2 = {0^n : n \ge 0}{1^n : n \ge 0}
+      Yes, they are identical
   (c) L_3 = {00^{i}11^{i} : i \ge 0} (the exponentiations apply to only the single 0 and the sing 1 respectively)
-  (d) L_4 = {00^{i}11^{i} : i > 0} 
+      No, this language doesn't contain \epsilon, which Eq_{01} does contain.
+  (d) L_4 = {00^{i}11^{i} : i > 0}
+      No, this language doesn't contain \epsilon, which Eq_{01} does contain.
   (e) L_5 = {00^{i}11^{i} : i \ge 0} \cup {\epsilon}
+      Yes, they are identical
   (f) L_6 = {0^{i}1^{j} : i,j \ge 0, and (i = j)}
-
+      Yes, they are identical
 *** My Answer
 
-** TODO Question 24
+** DONE Question 24
+   CLOSED: [2019-01-17 Thu 21:29]
   Consider the language L_7 = {0^{i}1^{j} : i, j \ge 0}.  Is it true that L_7 = {0^{i} : i \ge 0}{1^i : i \ge 0}? 
   Explain, providing reasons.
 
 *** My Answer
+    No, it is not true. The language L_7 contains strings where the number of
+    '0's is not equal to the number of '1's, but {0^{i} : i \ge 0}{1^i : i \ge 0}
+    contains no such strings.
 
-** TODO Question 25
+** DONE Question 25
+   CLOSED: [2019-01-17 Thu 21:54]
   Someone proposes that the complement of L_6 (written \bar{L_6}) is defined as
   follows. L_8 = {0^{i}1^{j} : i, j \ge 0, and (i \ne j)}. Assume that the alphabet is \Sigma =
   {0,1}. 
@@ -419,3 +446,12 @@ Here is where I will type my work for Week 02.
   (d) Are there strings in L_8 that are not in \bar{L_6}?  Explain.
   
 *** My Answer
+    Firstly, this question needs to be rewritten.  
+
+    It is true, because every string that isn't in L_6 is in L_8, which is the
+    complement of L_6.
+
+    Performing \bar{L_6} - L_8 yields an empty language {\empty}, because the question
+    defined them to be equal.
+
+    No, there are not. They were defined to be totally equal.
