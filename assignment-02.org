@@ -1,6 +1,6 @@
 Here is where I will type my work for Week 02.
 
-* Questions [28%]
+* Questions [72%]
 ** DONE Question 1
    CLOSED: [2019-01-16 Wed 12:59]
   As per our definitions, can *Nat* be an alphabet? Why or why not?
@@ -62,16 +62,34 @@ Here is where I will type my work for Week 02.
     subset s of *Nat* with {\empty} is always equal to {\empty}, thus satisfying
     requirement b.
 
-** TODO Question 6
+
+** DONE Question 6
+   CLOSED: [2019-01-17 Thu 18:23]
   Why is \epsilon not a member of L_(a_lt_b)?
 
 *** My Answer
 
-** TODO Question 7
+
+    #+BEGIN_SRC python :results output
+      limit = 50
+      print ['a' * i + 'b' * j for i in range(5) for j in range(5) if j >= 0 and i < j]
+    #+END_SRC
+
+    #+RESULTS:
+    : ['b', 'bb', 'bbb', 'bbbb', 'abb', 'abbb', 'abbbb', 'aabbb', 'aabbbb', 'aaabbbb']
+
+    \epsilon is not a member of L_{(a_lt_b)} because the amount of a's and b's in \epsilon is
+    equal, and this is disallowed by the condition i < j.
+
+** DONE Question 7
+   CLOSED: [2019-01-17 Thu 18:24]
   Which inequality in the definition of L_(a_lt_b) would you alter in order to
   induce \epsilon into this language?
 
 *** My Answer
+
+
+    I would alter the inequality i < j so that it read ((i < j) or (i == 0 and j == 0)).
 
 ** DONE Question 8
    CLOSED: [2019-01-16 Wed 16:56]
@@ -135,7 +153,7 @@ Here is where I will type my work for Week 02.
     #+RESULTS:
     : [[], ['a'], ['b'], ['a', 'b'], ['c'], ['a', 'c'], ['b', 'c'], ['a', 'b', 'c']]
 
-** DONE COMMENT Question 9
+** DONE Question 9
    CLOSED: [2019-01-16 Wed 17:03]
   Write down a one-line set comprehension in Python to generate a set of strings
   of the following form:
@@ -158,17 +176,35 @@ Here is where I will type my work for Week 02.
   #+RESULTS:
   : ['', '()', '(())', '((()))', '(((())))', '((((()))))']
 
-** TODO Question 10
-  Is this true in Python for two string p and q? Explain! Argue (in one paragraph)
+** DONE Question 10
+   CLOSED: [2019-01-17 Thu 16:51]
+  Is this true in Python for two strings p and q? Explain! Argue (in one paragraph)
   why this works for any two strings p and q.
 
   #+BEGIN_SRC python :results silent
-(p+q)[::-1] == (q[::-1] + p[::-1])
+  (p+q)[::-1] == (q[::-1] + p[::-1])
   #+END_SRC
 
 *** My Answer
 
-** TODO Question 11
+
+  #+BEGIN_SRC python :results output
+    def proposition(p, q):
+        return (p+q)[::-1] == (q[::-1] + p[::-1])
+
+    print proposition('Hello', 'world!')
+  #+END_SRC
+
+  #+RESULTS:
+  : True
+
+  The left hand side of this function appends p and q, and then reverses them.
+  The right hand side reverses q and p, and then appends them in that order. The
+  two sides always result in the same string for any two strings p and q because
+  p and q 
+
+** DONE Question 11
+   CLOSED: [2019-01-17 Thu 19:01]
 
   In a sentence or two, describe the contents of L_1, L_2, and L_3 in English.
 
@@ -176,20 +212,31 @@ Here is where I will type my work for Week 02.
   L_2 = {w:w is a string of balanced parentheses}
   L_3 = {w:w has an equal number of parentheses}.
 
-  Note that the alphabet consists of the two symbols ( and _. By "balanced
-  parentheses," we mean that in any string over ( and ), every occuraence of a
+  Note that the alphabet consists of the two symbols ( and ). By "balanced
+  parentheses," we mean that in any string over ( and ), every occurrence of a
   right parenthesis must be matched by a left parenthesis that appears earlier in
   the string. In your answer you should also mention all possible language
   inclusions that exist among L_1, L_2, and L_3 (i.e., if L_x \sub L_y for x,y \in
-  {1.2.3}, mention that in your answer).
+  {1,2,3}, mention that in your answer).
 
 *** My Answer
 
-** TODO Question 12
+
+    L_1 is the language of all balanced sets of parenthesis, and includes \epsilon.
+    L_2 is the language including a single string of balanced parentheses. L_2 \sub L_1
+    L_3 is the language including a single string with an equal number of parentheses. L_3 \sub L_1
+
+** DONE Question 12
+   CLOSED: [2019-01-17 Thu 17:32]
   What is the difference between {\epsilon} and {\empty}? Which of these is a language over
   the alphabet {2,3}?
 
 *** My Answer
+
+    The difference between {\epsilon} and {\empty} is that {\empty} is a truly empty set, while
+    {\epsilon} is a set with one empty string in it. Both are languages over the
+    alphabet {2, 3}.
+
 
 ** TODO Question 13
   Prove that {\epsilon} is indeed the *One* element for language concatenation by
@@ -197,7 +244,6 @@ Here is where I will type my work for Week 02.
   back L.
 
 *** My Answer
-
 
 ** TODO Question 14
   Suppose \Sigma = {0,1} - commonly called "the alphabet" is treated as a language.
@@ -212,14 +258,15 @@ Here is where I will type my work for Week 02.
 
 *** My Answer
 
-** TODO Question 15
+** DONE Question 15
+   CLOSED: [2019-01-17 Thu 08:47]
   Suppose a language M = {0,10} is given.  What are the following language exponents?  
-  (a) M^2 = {00, 010, 100, 1010}
-  (b) M^0 = ?
-  (c) M^1 = ?
-  (d) M^3 = ?
 
 *** My Answer
+  (a) M^2 = {00, 010, 100, 1010}
+  (b) M^0 = {}
+  (c) M^1 = {0, 10}
+  (d) M^3 = {000, 0010, 0100, 01010, 1000, 10010, 10100, 101010}
 
 ** TODO Question 16
   On Page 20, we defined three languages L_1, L_2, and L_3. Answer these question
@@ -238,7 +285,8 @@ Here is where I will type my work for Week 02.
 
 *** My Answer
 
-** TODO Question 18
+** DONE Question 18
+   CLOSED: [2019-01-17 Thu 14:30]
   Let us define a function 'star' with the following definition:
 
   (a) star(L,0) = L^0
@@ -247,53 +295,99 @@ Here is where I will type my work for Week 02.
 
   Now write down the contents of star(L,n) for various L and n. Again, to avoid
   confusion, we have written out the answer for some number of cases:
-  (a) star({0,1}, 2) = {\epsilon, 0, 1, 0, 01, 10, 11}
-  (b) star({0,1}, 0) = ?
-  (c) star({0,1}, 1) = ?
-  (d) star({0,1}, 3) = ?
-  (e) star({0,10}, 2) = ?
-  (f) star({0,10}, 0) = ?
-  (g) star({0,10}, 1) = ?
-  (h) star({0,10}, 3) = ?
-  (i) star({0,10}, 2) = {\epsilon, 0, 1, 00, 01, 00, 10, 11, 100, 001, 0000}
-  (j) star({0,10}, 0) = ?
-  (k) star({0,10}, 1) = ?
-  (l) star({0,10}, 3) = ?
-  (m) How many elements are these in star({0,1}, \infin)? Explain your answer.
-  (n) Suppose we define star({0,1}) = star({0,1}, \infin). That is, when we drop the
-      second argument of the ocerloaded star function, we assume that its
-      meaning is the same as the star function of two arguments where the second
-      argument is set to \infin. 
-      
-      Question: How would you describe one random string in star({0,1})?
-
-      Think of a general way of characterizing it; here is a start: An arbitrary
-      string that is finite/infinite and each symbol in the string is a ...
 
 *** My Answer
 
-** TODO Question 19
+    (a) star({0,1}, 2) = {\epsilon, 0, 1, 00, 01, 10, 11}
+    (b) star({0,1}, 0) = {\epsilon}
+    (c) star({0,1}, 1) = {\epsilon, 0, 1}
+    (d) star({0,1}, 3) = {\epsilon, 0, 1, 00, 01, 10, 11, 000, 001, 010, 011, 100, 101, 110, 111}
+    (e) star({0,10}, 2) = {\epsilon, 0, 10, 00, 010, 100, 1010}
+    (f) star({0,10}, 0) = {\epsilon}
+    (g) star({0,10}, 1) = {\epsilon, 0, 1}
+    (h) star({0,10}, 3) = {\epsilon, 0, 10, 00, 010, 100, 1010, 000, 0010, 0100, 01010, 1000, 10010, 10100, 101010}
+    (i) star({0,1,00,\epsilon}, 2) = {\epsilon, 0, 1, 00, 01, 000, 10, 11, 100, 001, 0000}
+    (j) star({0,1,00,\epsilon}, 0) = {\epsilon}
+    (k) star({0,1,00,\epsilon}, 1) = {\epsilon, 0, 1, 00}
+    (l) star({0,1,00,\epsilon}, 3) = {\epsilon, 0, 1, 00, 01, 000, 10, 11, 100, 001, 0000, 000, 001, 0000, 010, 011, 0100, 0000, 0001, 00000, 100, 101, 1000, 110, 111, 1100, 1000, 1001, 10000, 0000, 0001, 00000, 0010, 0011, 00100, 00000, 00001, 000000}
+    (m) How many elements are these in star({0,1}, \infin)? Explain your answer.
+
+        The function star({0,1}, \infin) has \sum_i^\infin 2^i elements. A language L^i has
+        len(L)^i elements in it, so when star(L, n) does L^0 \cup L^1 \cup \dots \cup L^n,
+        the result has len(L)^0 + len(L)^1 + \dots + len(L)^n elements. This can be
+        summarized as \Sigma_i^{\infin}len(L)^i. len(L) in this case is equal to 2, so that 
+        results in \Sigma_i^{\infin}2^i.
+
+    (n) Suppose we define star({0,1}) = star({0,1}, \infin). That is, when we drop the
+        second argument of the overloaded star function, we assume that its
+        meaning is the same as the star function of two arguments where the second
+        argument is set to \infin. 
+        Question: How would you describe one random string in star({0,1})?
+        Think of a general way of characterizing it; here is a start: An arbitrary
+        string that is finite/infinite and each symbol in the string is a ...
+
+        I would describe on random string in star({0,1}) as an arbitrary string
+        that is finite, where each symbol in the string is either '0' or '1'
+
+** DONE Question 19
+   CLOSED: [2019-01-17 Thu 14:40]
   Show that L_E is the set of even-length strings over alphabet {0}.
   L_E = {0^{2i} : i \ge 0}
 
 *** My Answer
 
-** TODO Question 20
+    Because the exponent to which the string '0' is raised will always be even,
+    the strings in L_E will always be even length strings composed solely of
+    multiples of the string '0'.
+
+    #+BEGIN_SRC python :results show
+      limit = 5
+      L_E = ['0' * (2 * i) for i in range(limit)]
+      return L_E
+    #+END_SRC
+
+    #+RESULTS:
+    |   | 00 | 0000 | 000000 | 00000000 |
+
+** DONE Question 20
+   CLOSED: [2019-01-17 Thu 14:42]
   Show that L_E = {(00)^i : i \ge 0} (the parentheses are used to group the two 0's
   and are not part of the alphabet).
 
 *** My Answer
+    In question 19, L_E is defined as follows:  L_E = {0^{2i} : i \ge 0}
+    Because 0^{2i} is the same as (00)^i, L_E = {0^{2i} : i \ge 0} = {(00)^{i} : i \ge 0}
 
-** TODO Question 21
+** DONE Question 21
+   CLOSED: [2019-01-17 Thu 15:26]
   Let L_0 = {0^{2i+1} : i \ge 0}. Show that {0}* = L_0 \cup L_E.
 
 *** My Answer
 
-** TODO Question 22
+
+    #+BEGIN_SRC python :results output
+      limit = 5
+      L_0 = ['0' * (2 * i + 1) for i in range(limit)]
+      L_E = ['0' * (2 * i) for i in range(limit)]
+      print "L_0 = ", L_0
+      print "L_E = ", L_E
+
+      union = sorted(L_0 + L_E)
+      print "L_0 U L_E = ", union
+    #+END_SRC
+
+    #+RESULTS:
+    : L_0 =  ['0', '000', '00000', '0000000', '000000000']
+    : L_E =  ['', '00', '0000', '000000', '00000000']
+    : L_0 U L_E =  ['', '0', '00', '000', '0000', '00000', '000000', '0000000', '00000000', '000000000']
+
+** DONE Question 22
+   CLOSED: [2019-01-17 Thu 16:14]
   Describe this language in English: 
   Eq_01 = {0^{n}1^{n} : n \ge 0}
 
 *** My Answer
+    Eq_01 is the language of all strings composed of n '0's followed by n '1's.
 
 ** TODO Question 23
   Which of the following languages is Eq_01 equal to, and why/why not:
