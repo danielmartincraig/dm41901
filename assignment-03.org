@@ -74,3 +74,109 @@
    (a) Describe the language L_x = L_{eqabc} \cap (L_{as}L_{bs}L_{cs}) in English.
    (b) Describe L_x through set comprehension.
    (c) Describe L_y = L_{eqabc} \cap (L_{cs}L_{as}L_{cs}L_{bs}L_{cs}) in English.
+
+* Homomorphism, pg. 35 [0%]
+** TODO Question 1
+   Is string reversal a homomorphism? Explain your answer.
+** TODO Question 2
+   Assume \Sigma{a\dots z}. Define a function f that maps a to d, b to e, ..., w to z,
+   and then x to a, y to b, z to c, etc. (every character is mapped two higher,
+   in a modulo fashion). The same function also maps ab to c. Is f a
+   homomorphism? Explain your answer.
+
+* Numeric Order, pg. 37 [0%]
+** TODO Question 1
+   Generate the first ten strings over the alphabet {0,1} in numeric order.
+** TODO Question 2
+   Arrange the above collection of strings in lexicographic order. Produce a
+   printout showing the numeric and the lexicographic orders.
+
+* DFA Basics, pg. 45 [0%]
+** TODO Question 1
+   Draw a DFA to recognize the set of strings over {0,1} that have an even
+   number of 0’s and any number of 1s. (Difference with the DFA in Figure 4.1:
+   that DFA does not have 1 in its alphabet.)
+** TODO Question 2
+   Accurately describe the language of the DFA of Figure 4.3. Does there exist a
+   2-state DFA with this language?
+
+* DFA Lasso, pg. 50 [0%]
+** TODO Question 1
+   Argue that DFA over singleton alphabets must always have a lasso shape
+   similar to that in Figure 4.10: after going forward a few steps, the DFA must
+   transition back to one of the earlier states.
+** TODO Question 2
+   Argue that for a DFA D that recognizes language L, there are an infinite
+   number of other DFA that also recognize L.
+
+* Regularity Preserving, pg. 56 [0%]
+** TODO Question 1
+   Consider the language
+
+   L_{ifabc} = {a^{i}b^{j}c^{k}d^{l} : i,j,k,l \ge \land if i = 3 then j = k else k = l}
+
+   (a) Show that this language is not regular. Note again that our pumping lemma
+   does not work directly on L_{ifabc}.
+   (b) However, if you reverse L_{ifabc} to obtain L_{ifabcrev}, you can indeed argue
+   through the cases. Please try this and report your experience.
+
+** TODO Question 2
+   On Page 51, we stated
+
+      "However, in order to state a simple and crisp argument, we choose to
+      focus on the first pump carried by state sp between visitation numbers v_{p}
+      and v_{p+k}."
+
+      One can define a more general Pumping Lemma that allows you to pick an x
+      yz split of any segment of length N of the given string w. The reason we
+      avoid introducing this Pumping lemma is for simplicity of exposition. Try
+      to state this more general Pumping Lemma by situating the xyz split after
+      an arbitrary initial segment h (“head”) and allowing for an arbitrary
+      final segment t (“tail”). Thus, we will have w = hmt where m (“middle”) is
+      a segment of length N, and furthermore, m is split into x yz in all
+      possible ways.
+
+** TODO Question 3
+   Prove using the more general Pumping Lemma of Exercise 2 that L_{if} is not
+   regular.
+
+** TODO Question 4
+   In order to reliably use the Pumping Lemma, one must define it in predicate
+   logic. Below, we define the Pumping Lemma in this fashion where one can
+   clearly see where the Pumping condition Cond lies.
+
+
+   Reg(L) \rArr
+       \exist N \in Nat:
+       \forall w \in L: [|w| \ge N
+           \rArr
+               \exist x,y,z \in \Sigma*:
+                   w = xyz
+               \land  |xy| \le N
+               \land  y \ne \epsilon
+               \land  \forall i \ge 0: xy^{i}z \in L ].
+
+   State the negated condition in predicate logic, and then relate it to the
+   recipe stated in English on Page 54 (the bulleted list under “Showing that
+   L01 is not regular”).
+
+** TODO Question 5
+   If you are given a “lineup” of languages, can you pick out those which are
+   regular and those which are probably not? It is good to check your ability to
+   do so: Here are some of the languages given in the Pumping Lemma tutor of the
+   JFLAP tool.13 For those that are regular, develop a DFA. For those that are
+   not regular, write a proof showing that to be the case.
+
+   (a) L_1 = {0^{i}1^{i} : i \ge 0}
+   (b) L_2 = {w \in {a,b}* : #_a(w) < #_b(w)}
+   (c) L_3 = {(ab)^{n}a^{k} : n > k, k \ge 0}
+   (d) L_4 = {a^{n}b^{k}c^{n+k} : n,k \ge 0}
+   (e) L_5 = {a^{n}b^{l}c^{k} : n > 5, l > 3, k \le l}
+   (f) L_6 = {a^{n} : even(n)}
+   (g) L_7 = {a^{n}b^{k} : odd(n) or even(k)}
+   (h) L_8 = {bba(ba)^{n}a^{n-1} : n \ge 0}
+   (i) L_9 = {b^{5}w : w \in {a,b}*, 2#_{a}(w) = 3#_{b}(w)}
+   (j) L_10 = {b^{5}w : w \in {a,b}*, (2#_{a}(w) + 5#_b(w)) mod 3 = 0}
+   (k) L_11 = {b^{k}(ab)^{n}(ba)^{n} : k \ge 4, n \ge 1}
+   (l) L_12 = {(ab)^{2n} : n \ge 1}
+   (m) L_13 = {a^{i}b^{j}c^{k} : if (i = 3) then (j = k)}
