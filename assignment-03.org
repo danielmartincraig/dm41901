@@ -1,2 +1,76 @@
+* Star Properties, pg. 30 [0%]
+** TODO Question 1
+   Describe the language below by listing six different strings from it. Pick as
+   many different kinds of strings - i.e., avoid obtaining the next string
+   simply by putting parenthesis around your previous selection:
+   
+   L_2 = {w : w \in {(,)}*, and w is well parenthesized}
 
- Here is where I will type my work for Week 03.
+** TODO Question 2
+   Consider the language:
+
+   L_7 = {0^{i}1^{j}: i,j\ge0}
+
+   Is it true that
+
+   L_7 = {0}*{1}*?
+
+   Explain, providing reasons
+   
+** TODO Question 3
+   There are exactly two languages (call them L_1 and L_2) over any alphabet \Sigma
+   such that their stars are finite. What are these languages?
+
+** TODO Question 4
+   Let our alphabet be \Sigma = {0,1}. Let w^R be the reverse of a string w. Consider
+   these languages: 
+   
+   L_{P0} = {w : w \in \Sigma^*}
+   L_{P1} = {ww^{R} : w \in \Sigma^*}
+   L_{P2} = {waw^{R} : a \in ({\epsilon} \cup \Sigma), w \in \Sigma^*}
+   L_{P3} = {waw^{R} : a \in \Sigma, w \in \Sigma^*}
+   L_{ww} = {ww : w \in \Sigma^*}
+
+   (a) Which language (L_{P1} through L_{P3}) denotes the set of all palindromes over
+   \Sigma?
+   (b) Which of these languages are regular? context-free? context- sensitive?
+   Explain at a high level, using the intuitions presented in Chapter 1 (no
+   formal proofs are necessary).
+
+** TODO Question 5
+   Let us define these languages, where ( and ) are meta symbols (for grouping)
+   and not part of the alphabet:
+   
+   L_E = {(00)^{i} : i \ge 0}
+
+   and 
+
+   L_O = {0(00)^{i} : i \ge 0}
+
+   Let L_{P2} be as in Question 4.  Answer these questions:
+
+   (a) Is L_E \cup L_O = {0}^{*} ? Explain.
+   (b) Is L = LL true for any of the above languages taking the
+       place of L? Explain.
+   (c) Is L = L^* true for any of the above languages taking the
+       place of L? Explain.
+   (d) Is L_{O}L_{O} = L_{E}?  If so, explain. If not:
+       i. What is (L_{O}L_{O}) - L_E?
+       ii. What is L_E - (L_{O}L_{O})?
+   (e) Is L_E^* = {0}*?  Explain.
+   (f) Is L_O^* = {0}*?  Explain.
+
+** TODO Question 6
+   Write a proof outline for why L^* = L^{*^{*}}.  Your approach should be as follows:
+   - We have to argue language equality of the form A = B.
+   - Since languages are sets, this boils down to showing A \sube B and B \sube A.
+   - Argue this through extensionality; e. g., for A \sube B, pick an x \in A
+     and argue that x \in B follows.
+
+* Language Puzzles, pg. 32 [0%]
+** TODO Question 1
+   Let L_{eqabc} be the subset of {a,b,c}* where each s \in L_{eqabc} has the same
+   number of a, b, and c. Let L_{as} = {a}*, L_{bs} = {b}*, and L_{cs} = {c}*.
+   (a) Describe the language L_x = L_{eqabc} \cap (L_{as}L_{bs}L_{cs}) in English.
+   (b) Describe L_x through set comprehension.
+   (c) Describe L_y = L_{eqabc} \cap (L_{cs}L_{as}L_{cs}L_{bs}L_{cs}) in English.
