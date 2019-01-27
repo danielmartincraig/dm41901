@@ -1,12 +1,22 @@
-* Star Properties, pg. 30 [0%]
-** TODO Question 1
+* Star Properties, pg. 30 [100%]
+** DONE Question 1
+   CLOSED: [2019-01-26 Sat 13:23]
    Describe the language below by listing six different strings from it. Pick as
    many different kinds of strings - i.e., avoid obtaining the next string
    simply by putting parenthesis around your previous selection:
    
    L_2 = {w : w \in {(,)}*, and w is well parenthesized}
 
-** TODO Question 2
+*** My Answer
+    - String 1: ()()()
+    - String 2: \epsilon
+    - String 3: (())
+    - String 4: ()(()())
+    - String 5: ((())())
+    - String 6: ((()())())
+      
+** DONE Question 2
+   CLOSED: [2019-01-26 Sat 13:25]
    Consider the language:
 
    L_7 = {0^{i}1^{j}: i,j\ge0}
@@ -16,12 +26,22 @@
    L_7 = {0}*{1}*?
 
    Explain, providing reasons
-   
-** TODO Question 3
+
+*** My Answer
+    Yes, it is true that L_7 = {0}*{1}*. This is because {0}*{1}* \sube L_7 and 
+    L_7 \sube {0}*{1}*.
+
+** DONE Question 3
+   CLOSED: [2019-01-26 Sat 13:38]
    There are exactly two languages (call them L_1 and L_2) over any alphabet \Sigma
    such that their stars are finite. What are these languages?
 
-** TODO Question 4
+*** My Answer
+    L_1* is finite, and L_2* is finite for any alphabet \Sigma. This means that L_1 and
+    L_2 = {\epsilon} and L_2 = {\empty}.
+    
+** DONE Question 4
+   CLOSED: [2019-01-26 Sat 13:58]
    Let our alphabet be \Sigma = {0,1}. Let w^R be the reverse of a string w. Consider
    these languages: 
    
@@ -31,13 +51,24 @@
    L_{P3} = {waw^{R} : a \in \Sigma, w \in \Sigma^*}
    L_{ww} = {ww : w \in \Sigma^*}
 
+*** My Answer
+
    (a) Which language (L_{P1} through L_{P3}) denotes the set of all palindromes over
-   \Sigma?
+   \Sigma? 
+   L_{P2} denotes the set of all palindromes over \Sigma, because it includes every
+   possible palindrome over the alphabet, including odd-length palindromes.
+
    (b) Which of these languages are regular? context-free? context- sensitive?
    Explain at a high level, using the intuitions presented in Chapter 1 (no
    formal proofs are necessary).
+   L_{P0} is a regular language, because items in it are of finite but unbounded
+   length, and they are just simple words over \Sigma.
+   L_{P1}, L_{P2}, and L_{P3} are context-free languages, because their members are simple palindromes.
+   L_{ww} is a context-sensitive language, because its members are repetitions of
+   the same string without any reversal.
 
-** TODO Question 5
+** DONE Question 5
+   CLOSED: [2019-01-26 Sat 15:08]
    Let us define these languages, where ( and ) are meta symbols (for grouping)
    and not part of the alphabet:
    
@@ -49,71 +80,181 @@
 
    Let L_{P2} be as in Question 4.  Answer these questions:
 
+*** My Answer
+
+   L_{P2} = {waw^{R} : a \in ({\epsilon} \cup \Sigma), w \in \Sigma^*}
+
    (a) Is L_E \cup L_O = {0}^{*} ? Explain.
+       L_E \sub {0}*, and L_0 \sub {0}*. L_E represents the language of
+       even-length strings of 0's including \epsilon, while L_0 represents the language
+       of odd-length strings of 0's. Their union, L_E \cup L_0, does indeed equal
+       {0}*.
+
    (b) Is L = LL true for any of the above languages taking the
        place of L? Explain.
+
+       L = LL is true for L_E, but it is not true for L_O. L_{O}L_{O} concatenates every
+       string in L_{0} with another in L_{0}, which always results in a string from
+       L_{0}. The result of the concatenation is the set of all equal-length
+       strings of 0's, L_{0}.
+
    (c) Is L = L^* true for any of the above languages taking the
        place of L? Explain.
-   (d) Is L_{O}L_{O} = L_{E}?  If so, explain. If not:
-       i. What is (L_{O}L_{O}) - L_E?
-       ii. What is L_E - (L_{O}L_{O})?
-   (e) Is L_E^* = {0}*?  Explain.
-   (f) Is L_O^* = {0}*?  Explain.
+   (d) Is L_{O}L_{O} = L_{E}?  If so, explain. 
+   
+       No, L_{O}L_{O} is not equal to L_{E}.
 
-** TODO Question 6
-   Write a proof outline for why L^* = L^{*^{*}}.  Your approach should be as follows:
+       If not:
+       i. What is (L_{O}L_{O}) - L_E?
+           L_{O}L_{O} - L_{E} = L_{O}
+       ii. What is L_E - (L_{O}L_{O})?
+           L_E - (L_{O}L_{O}) = L_{E}
+
+   (e) Is L_E^* = {0}*?  Explain.
+       Yes, L_E^* = {0}*.  This is because L_{E}* is the set of all strings made up of 0's, aka {0}*.
+   (f) Is L_O^* = {0}*?  Explain.
+       No, L_O^* \ne {0}*.  This is because L_{O}* is the set of all even-length strings made up of 0's, {00}*.
+** DONE Question 6
+   CLOSED: [2019-01-26 Sat 16:13]
+   Write a proof outline for why L* = L*^{*}.  Your approach should be as follows:
    - We have to argue language equality of the form A = B.
    - Since languages are sets, this boils down to showing A \sube B and B \sube A.
    - Argue this through extensionality; e. g., for A \sube B, pick an x \in A
      and argue that x \in B follows.
 
-* Language Puzzles, pg. 32 [0%]
-** TODO Question 1
+*** My Answer
+    
+    L* = L*^*.  
+    This is because L* \sube L*^* and L*^* \sube L*
+
+    First, show that L* \sube L*^* by considering that L* is like L*^* where each of
+    the exponents of the copies of L after the first is 0, to which L* is
+    concatenated. This makes L* a subset of L*^*.
+
+    Finally, show that L*^* \sube L* by considering that L*^* is equivalent to L_1*L_2*L_3*L_4* \dots L_m*.
+    Now, if we pick a k equal to the sum of the m values, then x \in L^k.
+        
+* Language Puzzles, pg. 32 [100%]
+** DONE Question 1
+   CLOSED: [2019-01-26 Sat 17:27]
    Let L_{eqabc} be the subset of {a,b,c}* where each s \in L_{eqabc} has the same
    number of a, b, and c. Let L_{as} = {a}*, L_{bs} = {b}*, and L_{cs} = {c}*.
+
+*** My Answer
+
    (a) Describe the language L_x = L_{eqabc} \cap (L_{as}L_{bs}L_{cs}) in English.
+
+   L_x is the language of all strings that have equal quantities of 'a', 'b', and 'c'
+   characters, where their characters are in alphabetical order.
+
    (b) Describe L_x through set comprehension.
+
+   L_x = {a^{i}b^{i}c^{i}: i \ge 0}
+
    (c) Describe L_y = L_{eqabc} \cap (L_{cs}L_{as}L_{cs}L_{bs}L_{cs}) in English.
 
-* Homomorphism, pg. 35 [0%]
-** TODO Question 1
+   L_y is the language of all strings that can be split into groups of characters
+   that match the following ordering: 'c's, 'a's, 'c's, 'b's, 'c's. These
+   strings must also have equal quantities of 'a', 'b', and 'c' characters.
+
+* Homomorphism, pg. 35 [100%]
+** DONE Question 1
+   CLOSED: [2019-01-26 Sat 17:42]
    Is string reversal a homomorphism? Explain your answer.
-** TODO Question 2
+
+*** My Answer
+    String reversal is not a homomorphism, because if you arbitrarily pull apart
+    a string into two strings, reverse them, and them put them back together,
+    you won't get the same result that you would if you were to just reverse the
+    original string.
+
+** DONE Question 2
+   CLOSED: [2019-01-26 Sat 17:42]
    Assume \Sigma{a\dots z}. Define a function f that maps a to d, b to e, ..., w to z,
-   and then x to a, y to b, z to c, etc. (every character is mapped two higher,
+   and then x to a, y to b, z to c, etc. (every character is mapped three higher,
    in a modulo fashion). The same function also maps ab to c. Is f a
    homomorphism? Explain your answer.
 
-* Numeric Order, pg. 37 [0%]
-** TODO Question 1
+*** My Answer
+    f is not a homomorphism, because if a word that started with 'ab' were
+    pulled apart after 'ab', and then f were were mapped across its characters,
+    ab would be mapped to 'c' instead of 'de' like it would be in an unsplit
+    word. Therefore, it is not a homomorphism.
+
+* Numeric Order, pg. 37 [100%]
+** DONE Question 1
+   CLOSED: [2019-01-26 Sat 17:43]
    Generate the first ten strings over the alphabet {0,1} in numeric order.
-** TODO Question 2
+
+*** My Answer
+   {\epsilon, 0, 1, 00, 01, 10, 11, 000, 001, 010}
+
+** DONE Question 2
+   CLOSED: [2019-01-26 Sat 17:48]
    Arrange the above collection of strings in lexicographic order. Produce a
    printout showing the numeric and the lexicographic orders.
 
-* DFA Basics, pg. 45 [0%]
-** TODO Question 1
+*** My Answer
+    #+BEGIN_SRC python
+      list = ['', '0', '1', '00', '01', '10', '11', '000', '001', '010']
+      return sorted(list)
+    #+END_SRC
+
+    #+RESULTS:
+    |   | 0 | 00 | 000 | 001 | 01 | 010 | 1 | 10 | 11 |
+
+* DFA Basics, pg. 45 [100%]
+** DONE Question 1
+   CLOSED: [2019-01-26 Sat 17:57]
    Draw a DFA to recognize the set of strings over {0,1} that have an even
    number of 0’s and any number of 1s. (Difference with the DFA in Figure 4.1:
    that DFA does not have 1 in its alphabet.)
-** TODO Question 2
+
+*** My Answer
+    #+BEGIN_VERSE 
+      _         _
+    1/ \      1/ \
+     ^ /       ^ /
+    +---+  0  +---+
+--> |   | --> | F |
+    +---+     +---+
+      ^         |
+      \    0   /
+       --------
+
+    #+END_VERSE
+
+** DONE Question 2
+   CLOSED: [2019-01-26 Sat 18:02]
    Accurately describe the language of the DFA of Figure 4.3. Does there exist a
    2-state DFA with this language?
+
+*** My Answer
+    This DFA defines the language of all strings that end with a non-odd number
+    of '0's followed by a '1' over the alphabet \Sigma = {0,1}. There is no 2-state
+    DFA that describes this language.
 
 * DFA Lasso, pg. 50 [0%]
 ** TODO Question 1
    Argue that DFA over singleton alphabets must always have a lasso shape
    similar to that in Figure 4.10: after going forward a few steps, the DFA must
    transition back to one of the earlier states.
+
+*** My Answer
+
 ** TODO Question 2
    Argue that for a DFA D that recognizes language L, there are an infinite
    number of other DFA that also recognize L.
+
+*** My Answer
 
 * Regularity Preserving, pg. 56 [0%]
 ** TODO Question 1
    Consider the language
 
    L_{ifabc} = {a^{i}b^{j}c^{k}d^{l} : i,j,k,l \ge \land if i = 3 then j = k else k = l}
+
+*** My Answer
 
    (a) Show that this language is not regular. Note again that our pumping lemma
    does not work directly on L_{ifabc}.
@@ -136,15 +277,18 @@
       a segment of length N, and furthermore, m is split into x yz in all
       possible ways.
 
+*** My Answer
+
 ** TODO Question 3
    Prove using the more general Pumping Lemma of Exercise 2 that L_{if} is not
    regular.
 
+*** My Answer
+    
 ** TODO Question 4
    In order to reliably use the Pumping Lemma, one must define it in predicate
    logic. Below, we define the Pumping Lemma in this fashion where one can
    clearly see where the Pumping condition Cond lies.
-
 
    Reg(L) \rArr
        \exist N \in Nat:
@@ -160,12 +304,16 @@
    recipe stated in English on Page 54 (the bulleted list under “Showing that
    L01 is not regular”).
 
+*** My Answer
+
 ** TODO Question 5
    If you are given a “lineup” of languages, can you pick out those which are
    regular and those which are probably not? It is good to check your ability to
    do so: Here are some of the languages given in the Pumping Lemma tutor of the
    JFLAP tool.13 For those that are regular, develop a DFA. For those that are
    not regular, write a proof showing that to be the case.
+
+*** My Answer
 
    (a) L_1 = {0^{i}1^{i} : i \ge 0}
    (b) L_2 = {w \in {a,b}* : #_a(w) < #_b(w)}
