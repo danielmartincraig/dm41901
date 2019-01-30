@@ -1,2 +1,82 @@
+* Week 4
+** Equal-change DFA, Page 58 [0%]
+*** TODO Question 1
+    What is missing from this alternate definition?
 
- Here is where I will type my work for Week 04.
+*** TODO Question 2
+    Design a DFA for L eqc and argue that it correctly includes all pos- itive
+    examples and correctly excludes all negative examples.
+
+** Block-of-3 DFA, Page 60 [0%]
+*** TODO Question 1
+    Design a DFA for L_{b3} , describing its design clearly in a few sentences.
+
+*** TODO Question 2
+    Now design a DFA for the complement of L_{b3}. Was this easier to design?
+    Justify your answer briefly. (Note: Often, the complement of a condition is
+    easier to specify.)
+
+*** TODO Question 3
+    What is the approach to obtaining the desired DFA from the complement DFA?
+
+** DFA exp blowup, Page 63 [0%]
+*** TODO Question 1
+    Prove that the exponential blow-up is unavoidable for the DFA implementing
+    the language “ Nth last bit is a 1” (L_{Nthlast1}). This language is
+
+    L_{Nthlast1} = {x1y : x \in {0,1}* \land y \in {0,1}^{(N-1)}}
+
+    Here, we refer to N as the “look-back” of this language.
+
+*** TODO Question 2
+    Follow the approach described on Page 61 and design a DFA that enters a
+    final state exactly when the magnitude of the number seen so far (arriving
+    LSB-first) is evenly divisible by 5.
+
+** DFA Jove design, Page 64 [0%]
+*** TODO Question 1
+    Enter the ‘third-last is 1’ language and carry out all the steps illustrated
+    in this section for the ‘second-last is 1’ language.
+
+*** TODO Question 2
+    For all the DFA you have been asked to design in this chapter, enter them
+    using the markdown syntax of Jove. Then run them under Jove. See book for
+    full instructions.
+
+** DFA Jove, union, intersection, Page 68 [0%]
+*** TODO Question 1
+    Take the DFA of Figure 4.7, calling it D. Obtain its complement, calling it
+    Dc. Obtain the union of D and Dc without the pruneUnreach call. Print the
+    resulting DFA. Is this still a DFA? (Hint: DFA are allowed to have
+    disconnected states. However, these are annoying and many algorithms do not
+    allow disconnected states; hence we prune unreachable states using the
+    algorithm in Figure 6.3.)
+*** TODO Question 2
+    Describe the algorithm implemented by pruneUnreach in Jove. Its code is in
+    Figure 6.3.
+
+** DFA, DeMorgan's Law, Page 79 [0%]
+*** TODO Question 1
+   Argue that if langeq-dfa(D1,D2) holds but iso-dfa(D1,D2) does not hold, then
+   the bijection mentioned under the Myhill-Nerode theorem does not exist.
+*** TODO Question 2
+    Attempt to directly design a DFA that accepts exactly the strings that
+    contain an odd number of 1s and end in 0101. Proceed by trying to write a
+    markdown description directly or draw the DFA on paper and convert it to a
+    markdown.
+*** TODO Question 3
+    Step through Figure 6.10 (call it DFA D) and make sure that the language is
+    indeed the intersection of these two languages. Write down three positive
+    examples handled by D and three negative ex- amples avoided by D. Now, using
+    our tools, check for the existence of a negative string in D with respect to
+    “ends in 0101” as follows: 
+    • Obtain the complement of “ends in 0101”. 
+    • Intersect with D and make sure that the intersection is empty. 
+    • As extra practice, minimize this intersection; what must it emerge as (a specific
+    kind of DFA; describe that in a sentence)?
+*** TODO Question 4
+    Design a DFA for recognizing the language of all strings over \Sigma = {a , b}
+    that contain an odd number of a ’s (call it D_{oa} ). Next obtain D_{eb} , a DFA
+    that recognizes strings with an even number of b’s. From D_{oa} and D_{eb}, show
+    how to obtain a DFA for D_{ea} ∪ D_{ob} using DeMorgan’s Law. Show all the steps
+    using Jove.
