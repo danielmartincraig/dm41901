@@ -1,11 +1,40 @@
 * Week 4
-** Equal-change DFA, Page 58 [0%]
-*** TODO Question 1
+** Equal-change DFA, Page 58 [100%]
+*** DONE Question 1
+    CLOSED: [2019-01-30 Wed 16:40]
     What is missing from this alternate definition?
 
-*** TODO Question 2
-    Design a DFA for L eqc and argue that it correctly includes all pos- itive
+    The difference between L_{eqc} and the language defined by this alternate
+    definition is that \epsilon is not included by the language defined by the
+    alternative definition.
+
+*** DONE Question 2
+    CLOSED: [2019-01-30 Wed 17:04]
+    Design a DFA for L_{eqc} and argue that it correctly includes all positive
     examples and correctly excludes all negative examples.
+
+    #+BEGIN_VERSE
+
+                        |
+                        |
+                        \darr
+                     +----+
+                   --| IF |--
+             \cap   /  +----+  \   \cap
+           0 |\darr  \darr 0        1 \darr  |\darr 1
+             +----+          +----+
+             | 0F |          | 1F |
+             +----+          +----+
+              |  \uarr 0          |  \uarr 1
+              |  |            |  |
+            1 \darr  |          0 \darr  |
+             +----+          +----+
+             | 1S |          | 0S |
+             +----+          +----+
+               \uarr|              \uarr|
+             1 \cup            0 \cup
+
+    #+END_VERSE 
 
 ** Block-of-3 DFA, Page 60 [0%]
 *** TODO Question 1
