@@ -455,3 +455,5 @@ Here is where I will type my work for Week 02.
     defined them to be equal.
 
     No, there are not. They were defined to be totally equal.
+
+

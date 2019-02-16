@@ -1,0 +1,188 @@
+* Exercise 7.5, NFA to DFA [66%]
+** DONE 7.5.1 
+   CLOSED: [2019-02-05 Tue 16:41]
+   Design an NFA for the language of all strings over alphabet {0, 1} that
+   contain a “0101” somewhere. Use Jove’s markdown syntax to capture your
+   design. Next,
+
+   (a) Simulate this NFA using the accepts_nfa function on the first 20 strings
+   in numeric order, showing that it works.
+
+   (b) Next, apply subset conversion by hand, and convert this NFA to an
+   equivalent DFA. Capture this DFA using Jove’s markdown.
+
+   (c) Now, invoke the nfa2dfa function that automatically converts your NFA to
+   a DFA.
+
+   (d) Show that these two DFA are language-equivalent using the langeq_dfa
+   function.
+
+** DONE 7.5.2 
+   CLOSED: [2019-02-08 Fri 11:26]
+   Consider the “blocks of 3” language described in §5.2.1. Suppose you want to
+   arrive at an NFA for the complement of this language, which means you have to
+   negate this sentence.
+
+     For each block of words B
+      IF B has 3 symbols
+       THEN B has exactly two 1s.
+
+   This negation is
+
+     There exists a block of words B such that
+      B has 3 symbols
+       AND B violates the condition “has exactly two 1s”.
+
+   (a) Argue that the above negation is correct.
+
+   (b) Describe the NFA for this negated language using Jove’s markdown. Convert
+   this NFA to a DFA, and finally complement it and minimize it, thus producing
+   a DFA for the “blocks of 3” language.
+
+   (c) For testing your constructions, design an NFA for the set of strings that
+   must not be in this DFA’s language, and then show (using Jove) that your DFA
+   does not contain any of these strings.
+
+** TODO 7.5.3 
+   Suppose we are given a DFA D = (Q,Σ,δ,Q_{0},F), and we are asked to design an
+   NFA N such that it recognizes the middle third of every string recognized by
+   D. More formally, we want the language of the NFA N, L(N), to be
+
+   L(N) = {y: ∃x, y, z∈Σ*: len(x) = len(y) = len (z) ∧ xyz ∈ L(D)}
+
+   Of course, for every string in L(D) whose length is not divisible by 3,
+   there will be no corresponding “middle-third” string contributed to N .
+
+   Build the NFA using the mk\under{}nfa call provided within Def\under{}NFA , and then produce
+   the minimized DFA using Jove’s suite of functions. Hint:
+
+   The idea is to imagine keeping a nondeterministically chosen milepost a third
+   of the way and another nondeterministically chosen milepost two-thirds of the
+   way. Model the NFA state as Q^5 (the Q being the set of states of the DFA),
+   i. e., Q × Q × Q × Q × Q . 
+
+   Let the initial state be (q_0, q_1, q_1, q_2, q_2). It is as if we placed one
+   mile-post token at some state q_1 , another at q_2 , and let a token from q_0
+   seek the one at q_1 , let another token at q_1 seek q_2 , and a final token at
+   q_2 seek q_f, a state in F. We move three tokens with “equal velocities,” and
+   if/when they manage to hit a “magical configuration,” we have found our
+   middle-third string.
+
+   More specifically, the idea is then to consider the following types of state
+   transitions (notice that the second and fourth components of the state tuple
+   stay put, serving as fixed mileposts):
+
+   (q_0, q_1, q_1, q_2, q_2) →
+   (q_01, q_1, q_12, q_2, q_21) →
+   (q_02, q_1, q_12, q_2, q_22) →
+   (q_03, q_1, q_13, q_2, q_23) →
+   ...
+   (q_1, q_1, q_2, q_2, q_f)
+
+   In this scenario, the last state is our “magical configuration.” Putting
+   these ideas to work, we write down the following compo- nents of our NFA:
+
+   Q^N = Q^5
+
+   Σ^N = Σ
+
+   Q_0^N = {(q_0, q_1, q_1, q_2, q_2) : q_1, q_2 ∈ Q} (i. e., start the NFA from the
+   set of these initial states).
+
+   F^N = {(q_1, q_1, q_2, q_2, q_f) : q_f ∈ F}.
+
+   δ^N((q_a, q_1, q_b, q_2, q_c ), y) = {(δ(q_a, c_1), q_1, δ(q_b, y), q_2, δ(q_c, c_2)): c_1, c_2 ∈ Σ}
+
+   One can see how only the middle token “listens to y ”; the other two tokens
+   chaotically wander. They seek to find the “magical configuration” in all
+   possible ways. Try animating this on a piece of paper using colored beads in
+   place of tokens.
+
+* Exercise 7.6.1, Brzozowski's DFA minimization, pg. 91 [100%]
+** DONE 7.6.1.1 
+   CLOSED: [2019-02-07 Thu 16:01]
+   Apply Brzozowski’s minimization algorithm by hand to the DFA of Figure 6.6.
+
+** DONE 7.6.1.2
+   CLOSED: [2019-02-07 Thu 16:02]
+   Can you argue that just carrying out the reversal followed by determinization
+   obtains the minimal DFA of the original DFA’s reverse? (It is worth studying
+   Brzozowski’s proof here.) Just get the general idea of this proof, if not the
+   whole proof.
+
+** DONE 7.6.1.3
+   CLOSED: [2019-02-07 Thu 16:02]
+   Using Jove, run the two minimization algorithms on “blimp” (the topmost DFA
+   in Figure 7.8), showing that the minimal DFA ob- tained are isomorphic.
+
+* Exercise 8.2, NFA Operations, pg. 99 [33%]
+** DONE 8.2.1
+   CLOSED: [2019-02-07 Thu 16:02]
+   Write down two strings in the symmetric difference of the regular languages
+   denoted by (0* 1 (1 0*)*) and (0* 1 (0* 1)*) .
+
+** TODO 8.2.2
+   Build NFA for the following REs by hand (here, '' is \epsilon). Do not
+   hand-simplify the RE or the NFA obtained. 
+
+   (”+a)*(b+cd)* . Here is the recommended approach:
+   • Build an NFA for (”+a) by building NFA for ” and a, and applying the procedure for + (union).
+   • Build an NFA for (b+cd).
+   • Obtain their stars separately.
+   • Apply the concatenation procedure on the resulting NFA.
+
+** TODO 8.2.3
+   Verify your overall construction by comparing the NFA you obtained against
+   the original RE through Jove’s conversion pipeline (convert them both to a
+   minimal DFA and then check for isomorphism).
+
+* Exercise 8.6.1, RE, Error Correction, pg. 107 [100%]
+** DONE 8.6.1.1
+   CLOSED: [2019-02-07 Thu 16:03]
+   There are overlaps between the following two regular expressions used in
+   defining h2_0101_re : (0+1)(0+1)01 and (0+1)1(0+1)1 (both their languages
+   contain the string 0101 ). Argue that such overlaps do not matter.
+
+** DONE 8.6.1.2
+   CLOSED: [2019-02-07 Thu 16:03]
+   Is the error-free occurrence of 0101 included in h2_0101_re ? If so, how many
+   times does it get included?
+
+** DONE 8.6.1.3
+   CLOSED: [2019-02-07 Thu 16:04]
+   Given the regular expression language so far, can you think of a way to
+   directly and compactly express the following regular language:
+
+   The set of all bit-strings that do not contain a 0101
+
+   If not, state why this pattern is difficult to express. Hint: While one can
+   easily complement DFA, there aren’t easy methods for complementing an NFA or
+   RE directly.
+
+* Exercise 8.8, Sylvester's formula [100%]
+** DONE 8.8.1 
+   CLOSED: [2019-02-07 Thu 16:04]
+   Consider two numbers p and q that are not relatively prime, say 3 and 6 whose
+   GCD is 3. Does there exist (in Nat) a largest number that cannot be expressed
+   as a linear combination of 3 and 6?
+
+** DONE 8.8.2
+   CLOSED: [2019-02-07 Thu 16:04]
+   What does your answer to the previous question tell you about why Sylvester’s
+   formula is applicable only to relatively prime numbers? Hint: if p and q have
+   gcd (p, q) > 1, and say p > q , then what is the minimum “step size” in the
+   series p, p+q, p+2q, \dots?
+
+* Exercise 8.8.5, Postage Stamp [100%]
+** DONE 8.8.5.1
+   CLOSED: [2019-02-07 Thu 16:05]
+   Determine the Frobenius number
+   (a) For p,q = 5,11 using Sylvester’s formula
+   (b) For p,q = 5,11 as well as for p , q , r = 5, 7, 11 using the minimal
+   automaton approach (use Jove).
+
+** DONE 8.8.5.2
+   CLOSED: [2019-02-07 Thu 16:05]
+   Write a proof that the lengths of strings in any regular set form an
+   ultimately periodic set.
+   

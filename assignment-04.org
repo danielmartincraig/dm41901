@@ -36,41 +36,237 @@
 
     #+END_VERSE 
 
-** Block-of-3 DFA, Page 60 [0%]
-*** TODO Question 1
+** Block-of-3 DFA, Page 60 [100%]
+*** DONE Question 1
+    CLOSED: [2019-01-30 Wed 21:34]
     Design a DFA for L_{b3} , describing its design clearly in a few sentences.
+    
+    L_{b3} = { x : Every contiguous block of 3 bits in x must have exactly two 1's }
 
-*** TODO Question 2
+**** My Answer
+
+     This is my original answer, followed by my updated answer. I realized dotObj_nfa(nfa_complement_of_blocks_of_three)
+
+thhttps://www.google.com/search?client=ubuntu&channel=fs&q=python+4&ie=utf-8&oe=utf-8macat
+     the vacuously true strings were not accepted by my DFA, so I learned a
+     little Dot  - he talks about them as if Jupyter were part of Jove.to make a better DFA. My dot code is derived from
+     https://orgmode.org/worg/org-contrib/babel/languages/ob-doc-dot.org.html
+
+     #+BEGIN_VERSE
+
+     +----+
+     | S  |-
+     +----+  \     ______________
+       |       \  /              \
+       \darr0      1\darr \darr1              \
+     +----+   +----+   +----+     |
+     | S0 |1\rarr| S1 |0\rarr|S10 | \    |
+     +----+   +----+   +----+  \   |
+       \uarr0       |        |     |   |
+       |       1\darr       1\darr     |   |
+       |      +----+   +----+  |   |
+       |      |F11 |\larr1|F101|  |   |
+       |      +----+   +----+  |   |
+       |        |    \    \uarr1   |   |
+       |       1\darr     \darr0  |    |   |
+       |      +----+   +----+  |   |
+       |      |F111|0\rarr|F110|  |   |
+       |      +----+   +----+  |   |
+       |                   \   |   |
+        \                  0\darr  \darr0  /
+         \                 +----+ /
+          -----------------|S100|-
+                           +----+
+
+     #+END_VERSE
+
+     My DFA is organized with its final states at the center. Each transition
+     between states models the act of scanning across each of the contiguous
+     blocks of 3 bits. As the block scrolls forward, it is possible to ignore
+     any leading zeros. As an example of this, it is possible for S100 to lead
+     to S0 when the next bit is 0. This is because if the next bit is a 0, then
+     the block of three bits becomes 000 as the 1 scrolls off of the front of
+     the block, and the leading zeros are disregarded.
+
+     #+BEGIN_SRC dot :file Lb3.png
+       digraph finite_state_machine {
+         rankdir=UD;
+         size="8,5"
+         node [shape = circle];
+         F -> F0 [ label = "0" ]
+         F -> F1 [ label = "1" ]
+         F0 -> F00 [ label = "0" ]
+         F0 -> F01 [ label = "1" ]
+         F1 -> F10 [ label = "0" ]
+         F1 -> F11 [ label = "1" ]
+         F00 -> S000 [ label = "0" ]
+         F00 -> S001 [ label = "1" ]
+         F01 -> S010 [ label = "0" ]
+         F01 -> F011 [ label = "1" ]
+         F10 -> S100 [ label = "0" ]
+         F10 -> F101 [ label = "1" ]
+         F11 -> F110 [ label = "0" ]
+         F11 -> F111 [ label = "1" ]
+         S000 -> S000 [ label = "0" ]
+         S000 -> S001 [ label = "1" ]
+         S001 -> S010 [ label = "0" ]
+         S001 -> F011 [ label = "1" ]
+         S010 -> S100 [ label = "0" ]
+         S010 -> F101 [ label = "1" ]
+         F011 -> F110 [ label = "0" ]
+         F011 -> F111 [ label = "1" ]
+         S100 -> S000 [ label = "0" ]
+         S100 -> S001 [ label = "1" ]
+         F101 -> S010 [ label = "0" ]
+         F101 -> F011 [ label = "1" ]
+         F110 -> S100 [ label = "0" ]
+         F110 -> F101 [ label = "1" ]
+         F111 -> F110 [ label = "0" ]
+         F111 -> F111 [ label = "1" ]
+       }
+     #+END_SRC
+
+     #+RESULTS:
+     [[file:Lb3.png]]
+
+*** DONE Question 2
+    CLOSED: [2019-01-31 Thu 13:30]
     Now design a DFA for the complement of L_{b3}. Was this easier to design?
     Justify your answer briefly. (Note: Often, the complement of a condition is
     easier to specify.)
 
-*** TODO Question 3
+**** My Answer    
+
+     The complement was easier to design, partly because I had already done the
+     design for L_{b3}, but also I could just use two states, A and B, to filter
+     out all strings shorter than 3 characters long.
+
+     #+BEGIN_SRC dot :file Lb3'.png
+       digraph finite_state_machine {
+         rankdir=UD;
+         size="8,5"
+         node [shape = circle];
+         A    -> B    [ label = "0" ]
+         A    -> B    [ label = "1" ]
+         B    -> F0   [ label = "0" ]         
+         B    -> F0   [ label = "1" ]         
+         F0   -> F0   [ label = "0" ]
+         F0   -> F1   [ label = "1" ]
+         F1   -> F10  [ label = "0" ]
+         F1   -> S11  [ label = "1" ]
+         F10  -> F100 [ label = "0" ]
+         F10  -> S101 [ label = "1" ]
+         S11  -> S110 [ label = "0" ]
+         S11  -> S111 [ label = "1" ]
+         F100 -> F0   [ label = "0" ]
+         F100 -> F1   [ label = "1" ]
+         S101 -> F10  [ label = "0" ]
+         S101 -> S11  [ label = "1" ]
+         S110 -> F100 [ label = "0" ]
+         S110 -> S101 [ label = "1" ]
+         S111 -> S110 [ label = "0" ]
+         S111 -> S111 [ label = "1" ]
+       }
+     #+END_SRC
+
+     #+RESULTS:
+     [[file:Lb3'.png]]
+
+*** DONE Question 3
+    CLOSED: [2019-01-31 Thu 13:33]
     What is the approach to obtaining the desired DFA from the complement DFA?
 
-** DFA exp blowup, Page 63 [0%]
-*** TODO Question 1
+    One approach could have been to simply draw the same DFA, and invert each
+    node final/nonfinal-wise. I did something similar to this, but I went a step
+    further by eliminating the seven final states associated with vacuously true
+    strings, replacing them in the complement with two nonfinal states that
+    exclude all vacuously false strings.
+
+** DFA exp blowup, Page 63 [50%]
+*** DONE Question 1
+    CLOSED: [2019-02-01 Fri 21:42]
     Prove that the exponential blow-up is unavoidable for the DFA implementing
-    the language “ Nth last bit is a 1” (L_{Nthlast1}). This language is
+    the language “Nth last bit is a 1” (L_{Nthlast1}). This language is
 
     L_{Nthlast1} = {x1y : x \in {0,1}* \land y \in {0,1}^{(N-1)}}
 
     Here, we refer to N as the “look-back” of this language.
 
+**** My Answer
+
+     Exponential blow-up is totally inevitable because as N grows, not only do
+     you need more states to accommodate the longer string, but you also must
+     have additional states that make up all the branches that you didn't take N
+     decisions ago.
+     
 *** TODO Question 2
     Follow the approach described on Page 61 and design a DFA that enters a
     final state exactly when the magnitude of the number seen so far (arriving
     LSB-first) is evenly divisible by 5.
 
-** DFA Jove design, Page 64 [0%]
-*** TODO Question 1
+**** My Answer
+
+** DFA Jove design, Page 64 [100%]
+*** DONE Question 1
+    CLOSED: [2019-02-01 Fri 21:25]
     Enter the ‘third-last is 1’ language and carry out all the steps illustrated
     in this section for the ‘second-last is 1’ language.
 
-*** TODO Question 2
+**** My Answer
+     L_{3rdlast1} = {x1y : x \in {0,1}* \land y \in {0,1}^{(N-3)}}
+
+     This DFA's info is borrowed from where I found it implemented inside Jove.
+     https://github.com/ganeshutah/Jove/blob/master/machines/dfafiles/thirdlastis1.dfa
+
+	     #+BEGIN_SRC dot :file third-last-is-1.png
+         digraph finite_state_machine {
+         rankdir=UD;
+         size="8,5"
+         node [shape = circle];
+         I     ->  S0      [ label = "0" ]
+         I     ->  S1      [ label = "1" ]
+         S0    ->  S00     [ label = "0" ]
+         S0    ->  S01     [ label = "1" ]
+         S1    ->  S10     [ label = "0" ]
+         S1    ->  S11     [ label = "1" ]
+         S00   ->  S000    [ label = "0" ]
+         S00   ->  S001    [ label = "1" ]
+         S01   ->  S010    [ label = "0" ]
+         S01   ->  S011    [ label = "1" ]
+         S10   ->  F100    [ label = "0" ]
+         S10   ->  F101    [ label = "1" ]
+         S11   ->  F110    [ label = "0" ]
+         S11   ->  F111    [ label = "1" ]
+         S000  ->  S000    [ label = "0" ]
+         S000  ->  S001    [ label = "1" ]
+         S001  ->  S010    [ label = "0" ]
+         S001  ->  S011    [ label = "1" ]
+         S010  ->  F100    [ label = "0" ]
+         S010  ->  F101    [ label = "1" ]
+         S011  ->  F110    [ label = "0" ]
+         S011  ->  F111    [ label = "1" ]
+         F100  ->  S000    [ label = "0" ]
+         F100  ->  S001    [ label = "1" ]
+         F101  ->  S010    [ label = "0" ]   
+         F101  ->  S011    [ label = "1" ]
+         F110 ->  F100    [ label = "0" ]
+         F110 ->  F101    [ label = "1" ]
+         F111 -> F110    [ label = "0" ]
+         F111 ->  F111    [ label = "1" ]
+         }
+     #+END_SRC
+
+     #+RESULTS:
+     [[file:Lb3'.png]]
+			 
+*** DONE Question 2
+    CLOSED: [2019-02-01 Fri 21:38]
     For all the DFA you have been asked to design in this chapter, enter them
     using the markdown syntax of Jove. Then run them under Jove. See book for
     full instructions.
+**** My Answer
+     I did these in Dot code, so that they could be part of my Org mode
+     document when I submit my portfolio to be graded.
 
 ** DFA Jove, union, intersection, Page 68 [0%]
 *** TODO Question 1
@@ -80,19 +276,26 @@
     disconnected states. However, these are annoying and many algorithms do not
     allow disconnected states; hence we prune unreachable states using the
     algorithm in Figure 6.3.)
+**** My Answer
+
 *** TODO Question 2
     Describe the algorithm implemented by pruneUnreach in Jove. Its code is in
     Figure 6.3.
+**** My Answer
 
 ** DFA, DeMorgan's Law, Page 79 [0%]
 *** TODO Question 1
    Argue that if langeq-dfa(D1,D2) holds but iso-dfa(D1,D2) does not hold, then
    the bijection mentioned under the Myhill-Nerode theorem does not exist.
+**** My Answer
+
 *** TODO Question 2
     Attempt to directly design a DFA that accepts exactly the strings that
     contain an odd number of 1s and end in 0101. Proceed by trying to write a
     markdown description directly or draw the DFA on paper and convert it to a
     markdown.
+**** My Answer
+
 *** TODO Question 3
     Step through Figure 6.10 (call it DFA D) and make sure that the language is
     indeed the intersection of these two languages. Write down three positive
@@ -103,9 +306,14 @@
     • Intersect with D and make sure that the intersection is empty. 
     • As extra practice, minimize this intersection; what must it emerge as (a specific
     kind of DFA; describe that in a sentence)?
+**** My Answer
+
 *** TODO Question 4
     Design a DFA for recognizing the language of all strings over \Sigma = {a , b}
     that contain an odd number of a ’s (call it D_{oa} ). Next obtain D_{eb} , a DFA
     that recognizes strings with an even number of b’s. From D_{oa} and D_{eb}, show
     how to obtain a DFA for D_{ea} ∪ D_{ob} using DeMorgan’s Law. Show all the steps
     using Jove.
+
+**** My Answer
+     

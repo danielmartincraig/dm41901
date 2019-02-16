@@ -257,21 +257,21 @@ Note: Currently, you see full credit for week one\rsquo{}s work. (\checkmark mea
 means no.) Update the table for week 2 and all subsequent weeks each class day
 and week during the semester.
 
-| / |   <> | <>  | <>  | <>  | <>  | <>  | <>  | <>                    |
+| / |   <> | <>  | <>  | <>  | <>  | <>  | <>  |                    <> |
 |---+------+-----+-----+-----+-----+-----+-----+-----------------------|
-| # | Week | CRU | PFP | CDL | SAQ | PAQ | CDL | PPL                   |
+| # | Week | CRU | PFP | CDL | SAQ | PAQ | CDL |                   PPL |
 |---+------+-----+-----+-----+-----+-----+-----+-----------------------|
-| # |    1 | \check   | \check   | \check   | \check   | \check   | \check   | 100%                  |
+| # |    1 | \check   | \check   | \check   | \check   | \check   | \check   |                  100% |
 |---+------+-----+-----+-----+-----+-----+-----+-----------------------|
-| # |    2 | \check   | \check   | \check   | \check   | \check   | \check   | 100%                  |
+| # |    2 | \check   | \check   | \check   | \check   | \check   | \check   |                  100% |
 |---+------+-----+-----+-----+-----+-----+-----+-----------------------|
 | # |    3 | \check   | \check   | \check   | \check   | \check   | \check   | 65% by Saturday night |
 |---+------+-----+-----+-----+-----+-----+-----+-----------------------|
-| # |    4 |     |     |     |     |     |     |                       |
+| # |    4 | \check   | \check   | \check   | \check   | \check   | \check   |                   53% |
 |---+------+-----+-----+-----+-----+-----+-----+-----------------------|
-| # |    5 |     |     |     |     |     |     |                       |
+| # |    5 | \check   | \check   | \check   | \check   | \check   | \check   |                   81% |
 |---+------+-----+-----+-----+-----+-----+-----+-----------------------|
-| # |    6 |     |     |     |     |     |     |                       |
+| # |    6 |     | \check   | \check   | \check   | \check   | \check   |                  100% |
 |---+------+-----+-----+-----+-----+-----+-----+-----------------------|
 | # |    7 |     |     |     |     |     |     |                       |
 |---+------+-----+-----+-----+-----+-----+-----+-----------------------|
@@ -320,37 +320,15 @@ Fill in your evidences here each week to build your portfolio.
 The number of pieces of evidence are determined by you. However,
 the more you have the better off you will be.
 
-** Week 1
-*** Some Exercise or Problem
-
-    Solution here
-
-*** Some Other Exercise or Problem
-
-    Solution here
-
-*** Some Problem Requiring Code
-
-#+BEGIN_SRC elisp :results silent
-;; this is just some example code showing you how it can be done.
-;; put evidence code in source blocks like this
-  (defun my-cool-function ()
-    (let (it be)
-      (setq it (+ 1 2) be (* 3 4))
-       (cons it be)))
-#+END_SRC
-
 ** Week 2
 #+INCLUDE: ./assignment-02.org
 
-  This directive has a keyword, namely :minlevel --- what do you suppose it
-  does?!
-
 ** Week 3
-  [[file:assignment-03.org][Link to Assignment File]] 
+#+INCLUDE: ./assignment-03.org
    
 ** Week 4
-   [[elisp:(progn%20(forward-line)%20(insert-file%20"assignment-04.org"))][Insert Assignment File]]
+#+INCLUDE: ./assignment-04.org
+
 ** Week 5
 
 ** Week 6
