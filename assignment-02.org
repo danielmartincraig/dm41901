@@ -445,7 +445,7 @@ Here is where I will type my work for Week 02.
       first in English and then using set comprehensions).
   (d) Are there strings in L_8 that are not in \bar{L_6}?  Explain.
   
-*** My Answer
+*** COMMENT My Answer
     Firstly, this question needs to be rewritten.  
 
     It is true, because every string that isn't in L_6 is in L_8, which is the
@@ -456,4 +456,36 @@ Here is where I will type my work for Week 02.
 
     No, there are not. They were defined to be totally equal.
 
+#+BEGIN_SRC elisp 
+  (defun factorial (n)
+    (if (= n 0)
+        1
+      (* n (factorial (- n 1)))))
+
+  (defun permutation(q r)
+    (/ (factorial q) (factorial (- q r))))
+
+  (defun combination (q r)
+    (/ (factorial q) ( * (factorial r) (factorial (- q r)))))
+#+END_SRC
+
+#+RESULTS:
+: combination
+
+#+BEGIN_SRC elisp 
+  (defun total-combination(x)
+    (loop for y from 1
+          while (< y x)
+          collect (combination x y)))
+#+END_SRC
+
+#+RESULTS:
+: total-combination
+
+#+BEGIN_SRC elisp 
+  (total-combination 10)
+#+END_SRC
+
+#+RESULTS:
+| 10 | 45 | 120 | 210 | 252 | 210 | 120 | 45 | 10 |
 

@@ -48,7 +48,24 @@ You are required to
 + do weekly homework assignments to deepen your understanding of selected topics.
 
 * Text
-   /Automata and Computability: A Programmer\rsquo{}s Perspective/
+   /Automata and C 100 	
+Daily Reading Quiz Tracking Sheet for Second Block
+	Apr 10 by 11:59pm 		
+Click to test a different score -
+	125 	
+Final
+	Apr 12 by 11:59pm 		
+Click to test a different score -
+	125 	
+Course Home Page 			
+N/A
+	0.00 / 0.00 	
+Daily Quizzes 			
+N/A
+	0.00 / 0.00 	
+Homework and Wireshark Assignments 			
+90.38%
+	omputability: A Programmer\rsquo{}s Perspective/
 
    (abbreviated ACAPP)
 
@@ -273,7 +290,7 @@ and week during the semester.
 |---+------+-----+-----+-----+-----+-----+-----+-----------------------|
 | # |    6 |     | \check   | \check   | \check   | \check   | \check   |                  100% |
 |---+------+-----+-----+-----+-----+-----+-----+-----------------------|
-| # |    7 |     |     |     |     |     |     |                       |
+| # |    7 |     | \check   | \check   | \check   | \check   | \check   |                   50% |
 |---+------+-----+-----+-----+-----+-----+-----+-----------------------|
 | # |    8 |     |     |     |     |     |     |                       |
 |---+------+-----+-----+-----+-----+-----+-----+-----------------------|
