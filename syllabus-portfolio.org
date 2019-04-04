@@ -281,7 +281,7 @@ and week during the semester.
 |---+------+-----+-----+-----+-----+-----+-----+-----------------------|
 | # |   10 | \check   | \check   | \check   | \check   | \check   | \check   |                  100% |
 |---+------+-----+-----+-----+-----+-----+-----+-----------------------|
-| # |   11 |     |     |     |     |     |     |                       |
+| # |   11 | \check   | \check   | \check   | \check   | \check   | \check   |                   83% |
 |---+------+-----+-----+-----+-----+-----+-----+-----------------------|
 | # |   12 |     |     |     |     |     |     |                       |
 |---+------+-----+-----+-----+-----+-----+-----+-----------------------|
@@ -354,8 +354,22 @@ the more you have the better off you will be.
    languages.
 
 ** Week 10
+   This week I served other students, and put in original and thoughtful work
+   during the week.
 
 ** Week 11
+   This week, I demonstrated qualities of an A student by helping other
+   students, encouraging other students, helping DM1 students, reading and
+   rereading the chapter, and overall by committing to make learning complexity
+   theory a lifelong goal.
+
+   I've decided that learning everything about complexity theory in the short
+   time that this class spends on it is not really possible - I'm just trying to
+   understand and learn enough that when I get into the real world, I can make
+   an independent study of the material, and maybe so that I can go to grad
+   school some day. This class is my opportunity to learn a new language that
+   will make me a more intelligent computer scientist. I hope to make the most
+   of it, even though there is a lot that I don't get at all.
 
 ** Week 12
 
