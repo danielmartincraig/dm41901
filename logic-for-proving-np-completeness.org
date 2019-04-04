@@ -7,15 +7,11 @@
 #+STARTUP: showeverything entitiespretty inlineimages
 #+SETUPFILE: theme-bigblow.setup
 
-#+BEGIN_SRC emacs-lisp :results silent
-  (byte-compile-disable-warning 'cl-functions)
-#+END_SRC
-
   How do we use propositional logic to do NP-Completeness proofs?
 * TODO First Understand An Elisp Implementation of Boolean Formulas
   A literal is a symbol with a value of 1 or 0.
 
-  A clause is a list of literals. 
+  A clause is a list of literals.
 
   A formula is a list of clauses. For now, assume a formula is in Conjunctive
   Normal Form (CNF --- aka Product of Sums).
@@ -62,7 +58,7 @@
               (apply 'append formula)))))
 #+END_SRC
 
-#+BEGIN_SRC emacs-lisp :results raw
+#+BEGIN_SRC elisp :results raw
   (literals formula1)
 #+END_SRC
 
@@ -75,9 +71,9 @@
 #+BEGIN_SRC emacs-lisp :results silent
   (defun flip (sym)
     (set sym (if (zerop (symbol-value sym)) 1 0)))
-#+END_SRC    
+#+END_SRC
 
-#+BEGIN_SRC emacs-lisp :results raw
+#+BEGIN_SRC elisp :results raw
   (flip 'a)
 #+END_SRC
 
@@ -87,24 +83,21 @@
 
   A formula is evaluated with the current values of the literals, or else the
   literals are set first from the optional assignment association list. The
-  evaluation gives 1 for true, or 0 for false. 
+  evaluation gives 1 for true, or 0 for false.
 #+BEGIN_SRC emacs-lisp :results silent
   (defun eval-cnf-formula (formula &optional assignment)
     (mapc (lambda (pair) (set (car pair) (cdr pair))) assignment)
     (if (zerop (apply '*
                       (mapcar
-                       (lambda (x)
-                         (apply '+
-                                (mapcar
-                                 (lambda (s)
-                                   (eval s)) x)))
+                       (lambda (clause)
+                         (apply '+ (mapcar 'eval clause)))
                        formula)))
         0
      (prog1 1 (put 'get-assignment :satisfied assignment))))
 #+END_SRC
 
-#+BEGIN_SRC emacs-lisp :results raw
-  (eval-cnf-formula formula1) 
+#+BEGIN_SRC elisp :results raw
+  (eval-cnf-formula formula1)
 #+END_SRC
 
 #+RESULTS:
@@ -126,17 +119,14 @@
     (mapc (lambda (pair) (set (car pair) (cdr pair))) assignment)
     (if (zerop (apply '+
                       (mapcar
-                       (lambda (x)
-                         (apply '*
-                                (mapcar
-                                 (lambda (s)
-                                   (eval s)) x)))
+                       (lambda (clause)
+                         (apply '* (mapcar 'eval clause)))
                        formula)))
         0
      1))
 #+END_SRC
 
-#+BEGIN_SRC emacs-lisp :results raw
+#+BEGIN_SRC elisp :results raw
   (eval-dnf-formula formula1)
 #+END_SRC
 
@@ -160,14 +150,14 @@
   We need a way to get an assignment from a number rendered in binary:
 #+BEGIN_SRC emacs-lisp :results silent
   (defun to-binary (n)
-    (let ((d (/ n 2)) 
+    (let ((d (/ n 2))
           (m (% n 2)))
       (if (= d 0)
-          (list m) 
+          (list m)
         (append (to-binary d) (list m)))))
 #+END_SRC
 
-#+BEGIN_SRC emacs-lisp :results raw
+#+BEGIN_SRC elisp :results raw
   (to-binary 5)
 #+END_SRC
 
@@ -178,10 +168,10 @@
   But we need to pad the bits with 0s to give as many bits as there are literals:
 #+BEGIN_SRC emacs-lisp :results silent
   (defun pad (list-of-bits n)
-    (append (make-list (- n (length list-of-bits)) 0) list-of-bits)) 
+    (append (make-list (- n (length list-of-bits)) 0) list-of-bits))
 #+END_SRC
 
-#+BEGIN_SRC emacs-lisp :results raw
+#+BEGIN_SRC elisp :results raw
   (pad (to-binary 5) 8)
 #+END_SRC
 
@@ -204,7 +194,7 @@
       shared-assignment))
 #+END_SRC
 
-#+BEGIN_SRC emacs-lisp :results raw
+#+BEGIN_SRC elisp :results raw
   (get-assignment '(a b c) 6)
 #+END_SRC
 
@@ -225,7 +215,7 @@
           collect (mapcar* 'cons list-of-literals (pad (to-binary i) n))))
 #+END_SRC
 
-#+BEGIN_SRC emacs-lisp :results value
+#+BEGIN_SRC elisp :results value
   (get-all-possible-assignments '(a b c))
 #+END_SRC
 
@@ -248,7 +238,7 @@
           (get-all-possible-assignments (literals formula))))
 #+END_SRC
 
-#+BEGIN_SRC emacs-lisp :results raw
+#+BEGIN_SRC elisp :results raw
   (is-satisfiable formula1)
 #+END_SRC
 
@@ -281,12 +271,13 @@ t
   But more likely we will be satisfied with one:
 #+BEGIN_SRC emacs-lisp :results silent
   (defun get-one-satisfying-assignment (formula)
-    (loop for assignment in (get-all-possible-assignments (literals formula))
-          when (= 1 (eval-formula formula assignment))
-          return assignment))
+    (or (get 'get-assignment :satisfied)
+        (loop for assignment in (get-all-possible-assignments (literals formula))
+              when (= 1 (eval-formula formula assignment))
+              return assignment)))
 #+END_SRC
 
-#+BEGIN_SRC emacs-lisp :results value
+#+BEGIN_SRC elisp :results value
   (get-all-satisfying-assignments formula1)
 #+END_SRC
 
@@ -298,7 +289,7 @@ t
 | (a . 1) | (b . 1) | (c . 1) |
 
   What about DNF?
-#+BEGIN_SRC emacs-lisp :results value
+#+BEGIN_SRC elisp :results value
   (defalias 'eval-formula 'eval-dnf-formula)
   (get-all-satisfying-assignments formula1)
 #+END_SRC
@@ -372,6 +363,12 @@ t
   the generated-by-this-transformation Boolean formula is *satisfiable*.
 
 [[elisp:(org-babel-load-file%20"logic-for-proving-np-completeness.org")][Load the Code]]
+
+#+BEGIN_SRC elisp :results silent
+  (byte-compile-disable-warning 'cl-functions)
+#+END_SRC
+
+[[elisp:(org-babel-load-file%20"logic-for-proving-np-completeness.org"%20t)][Compile and Load the Code]]
 
   Play with some simple graphs with no more than 5 nodes. Then see what you can
   determine about the chromaticity of the two below graphs with formulas
@@ -526,7 +523,13 @@ t
     )))
 #+END_SRC
 
-#+BEGIN_SRC elisp :results raw 
+#+BEGIN_SRC elisp :results raw
   (and (is-satisfiable-faster graph2-formula)
        (get-all-satisfying-assignments graph2-formula))
 #+END_SRC
+
+#+BEGIN_SRC elisp :results silent
+  (kill-new (to-dimacs graph2-formula))
+#+END_SRC
+
+  Relate these two graph formulas to the two graphs below. Which goes with which?
