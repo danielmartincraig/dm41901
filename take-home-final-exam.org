@@ -6,7 +6,7 @@
 #+STARTUP: showeverything entitiespretty
 #+SETUPFILE: theme-bigblow.setup
 
-* Instructions
+* Instructions 
   Please analyze and reason carefully, making full use of the *mind tools* in
   your possession:
 
@@ -119,7 +119,102 @@
   \ldquo{}computation\rdquo is known in advance, how am I truly free to \ldquo{}compute\rdquo something
   else?
 
-* TODO Decide a Halting Problem
+** My Response
+*** Question 1   
+   *The advanced intelligences that are given control of a body created in the
+   image of God do not always obey the higher laws that have been decreed for
+   their progression, thus limiting their “computational output” (growth). Why
+   is that?*
+
+   Addressing this question requires me to state that I disagree with the idea
+   that intelligence in God’s creation is equivalent to computation. While it is
+   interesting to model intelligence with computation, I don’t believe that this
+   amounts to anything more than a model. I see no reason to assume that
+   intelligence is equivalent to computation.
+
+   With that said, I do think that it’s interesting that God’s plan accounts for
+   the fact that we don’t always obey his laws. The question mentions higher
+   laws. Maybe repentance is a higher law than obedience. I say this because
+   repentance overrides disobedience, helping us become more godlike.
+
+   God’s plan anticipated the fact that we wouldn’t always be obedient to his
+   commandments, so he provided a Savior for us. Because of my savior Jesus I
+   know that I have a recourse when I have messed up. Christ has been the one to
+   pick me up when I didn’t have any other option but despair, so I’m grateful
+   to be able to repent because it invites Him to be with me.
+
+ 	 ‘Intelligences’ fall short of perfect obedience because we are willful and
+ 	 because it’s allowed by God. Although it pains him, our disobedience is
+ 	 forgivable because Christ saved us. The mistakes we make are ours, and
+ 	 learning from them and learning from the experience of repentance teach us to
+ 	 appreciate the care that God puts into teaching us.
+
+   In summary, it seems necessary to have sins so that we can repent from them.
+
+*** Question 2
+   *At this stage in our progression, there are many limits to our freedom of
+   choice. While we are free to disobey the laws of the gospel, or the laws of
+   man, we are *not* free to “disobey” the law of gravity, or electromagnetism,
+   or energy/momentum conservation, etc. We are not free to jump off a cliff and
+   not fall. We are likewise not free to remember our pre-mortal existence, nor
+   to peer into the post-mortal realm at will. Why these limitations?*
+
+   In my understanding, these limitations have been put on our ability to choose
+   because these limitations inspire human creativity and strengthen our ability
+   to work. We progress as human beings because the limitations mentioned
+   require us to put effort and thought into the way that we live our lives.
+
+   If everything were possible to us, then life would be “just be a matter of
+   learning the tricks of the trade” in the words of Rudy Rucker. These ‘tricks
+   of the trade’ might include harvesting endless energy from a perpetual motion
+   machine, floating away to Mars to plunder its resources, or any number of
+   other effort-saving approaches to getting something for nothing. Life’s laws
+   force us to try, which is part of God’s plan for us.
+
+   When we are stuck in a suboptimal situation, we put ingenuity and willpower
+   to work to improve our lives. This is what God intended for us, and it is
+   good for us.
+
+*** Question 3
+
+   *The free will of man and the omniscience of God are mutually contradictory.
+   If God knows the future perfectly, how am I free to choose to do otherwise
+   than what He knows I will choose to do? If the end result of my life’s
+   “computation” is known in advance, how am I truly free to “compute” something
+   else?*
+
+   Our lives might be thought of as strings over the set of all life choices. We
+   compose our lives choice by choice, deciding in each moment what we will do
+   next. This doesn’t contradict the operation of God in determining whether our
+   lives are acceptable because in each moment we have the possibility of
+   repenting. When we repent, we are “snatched … from our awful, sinful,
+   and polluted state” and God allows us to escape the horrible damnation that
+   would be inescapably imminent without the gift of repentance.
+
+   I feel strongly that even if the choices of our lives did seem fixed and
+   predetermined to God, they are still meaningfully and powerfully our choices
+   to make. In our time-bound lives, we don’t enjoy the freedom to see the end
+   of time from the beginning. Despite this, our choices are meaningful.
+
+   God’s foreknowledge might be thought of in terms of a semi-decider that
+   accepts no unrepentant and sinful life. With this semi-decider, we are saved
+   from being found unacceptable before God each time that we repent. Life is
+   not quite this simple, because God also requires us to be baptized in order
+   to enter Heaven. Even so, it’s a helpful way of thinking about the idea.
+
+   I’m interested in whether or not there is an if and only if relationship
+   between repentance and acceptance before God. It seems intuitive that there
+   is. Equivalently, perhaps the language of worthy lives could be said to be
+   decidable. The scriptures that I have found don’t support this directly, for
+   example Alma 9:27, which says that Christ “cometh to redeem those who will
+   be baptized unto repentance, through faith on his name.” It stops barely
+   short of stating an ‘if and only if’ relationship.
+
+ 	 I am interested now to learn more about this, and I am going to take it up as
+ 	 a matter of personal study.
+
+
+* Decide a Halting Problem
   This more computational/decidability-related task is to figure out what the
   code in the below block named =decide= does, and decide whether or not it will
   halt when invoked with a , , (comma comma) to evaluate the source code block.
@@ -131,7 +226,7 @@
   3. Will it ever terminate?
 
 #+name: decide
-#+BEGIN_SRC elisp :results silent
+#+BEGIN_SRC elisp :results silent 
   (package-reinstall 'timp)
   (require 'timp)
   (timp-send-code (setq thread (timp-get :persist t))
@@ -159,4 +254,60 @@
                             (setq time-keeps-ticking t))))))
 #+END_SRC
 
+#+BEGIN_SRC elisp
+  (require 'calc-math)
+  (require 'cl)
+  (loop with flibbers = (list 17 78 19 23 29 77 95 77 1 11 13 15 15 55)
+        with flobbers = (list 91 85 51 38 33 29 23 19 17 13 11 14 2 1)
+        with i = 2
+        with f = 0
+        with p = nil
+        with time-keeps-ticking = t
+        while time-keeps-ticking
+        do (loop initially do (setq time-keeps-ticking nil)
+                 for flibber in flibbers
+                 for flobber in flobbers
+                 while (not time-keeps-ticking)
+                 do (setq f (math-mul i (math-make-frac flibber flobber)))
+                 (when (math-integerp f)
+                   (setq i f
+                         p (math-integer-log2 i))
+                   (when p
+                     (message "2^%s = %s" (calc-eval p) (calc-eval i)))
+                   (setq time-keeps-ticking t))))
+#+END_SRC
+
   Hint: [[elisp:(switch-to-buffer-other-window "*Messages*" t)][Switch to Messages Buffer]]
+
+**  My Response
+
+1. What is this program computing?
+
+   This program computes 2 to the power of each prime number. This allows it to
+   compute the primes themselves, through the use of log2.
+
+2. How does it do it? 
+
+   This code uses an interesting system involving a list of flibbers and a list of
+   flobbers. These are ordered lists of integers that represent numerators and
+   denominators of an ordered list of fractions. When the number 2 is repeatedly
+   multiplied by the first of the fractions that gives an integer product as a
+   result it eventually results in a power of 2. When this happens, the exponent
+   is a prime. This exponent is computed by finding the log (base 2) of the
+   product.
+
+   I consulted page 268 of *The Nature of Computation* by Cristopher Moore and
+   Stephan Mertens to write this quick description. James Palmer's advice to
+   search the list of numbers to find out about the problem helped me to zero in
+   on this source. I also read
+   http://mathforum.org/kb/message.jspa?messageID=216274
+
+   It appears that all the work is done in the same thread, and that timp is
+   used only so that emacs doesn't lock up while the code is running. This is a
+   very cool feature.
+
+3. Will it ever terminate?
+
+   This program will never terminate, because it computes the members of an
+   infinite set. 'time-keeps-ticking is always set to 't' at the end of every
+   inner loop, so the outer while loop never finishes its work.
